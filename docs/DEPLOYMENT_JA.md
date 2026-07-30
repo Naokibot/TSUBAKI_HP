@@ -1,4 +1,4 @@
-# TSUBAKI Portfolio ローカル確認・公開手順
+# TSUBAKI Tech Portfolio ローカル確認・公開手順
 
 ## 1. ローカルで確認する
 
