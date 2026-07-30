@@ -1,0 +1,59 @@
+name: Bootstrap source
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.bootstrap/**'
+      - '.github/workflows/bootstrap-source.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Rebuild and verify source archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat \
+            .bootstrap/chunks/00 \
+            .bootstrap/chunks/01a \
+            .bootstrap/chunks/01b \
+            .bootstrap/chunks/01c \
+            .bootstrap/chunks/02 \
+            .bootstrap/chunks/03 \
+            .bootstrap/chunks/04 \
+            .bootstrap/chunks/05 \
+            .bootstrap/chunks/06 \
+            .bootstrap/chunks/07a \
+            .bootstrap/chunks/07b \
+            .bootstrap/chunks/07c \
+            .bootstrap/chunks/07d \
+            > /tmp/source.b64
+          base64 --decode /tmp/source.b64 > /tmp/source.tar.gz
+          echo 'faf61807f28a7b2b59e4992a79bf4c89b65a582c1e82c195a52ea729bd8bc9de  /tmp/source.tar.gz' | sha256sum -c -
+          mkdir -p /tmp/source
+          tar -xzf /tmp/source.tar.gz -C /tmp/source
+          test -f /tmp/source/TSUBAKI_Portfolio/package.json
+          test -f /tmp/source/TSUBAKI_Portfolio/scripts/build.mjs
+
+      - name: Replace bootstrap files with the project
+        shell: bash
+        run: |
+          set -euo pipefail
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a /tmp/source/TSUBAKI_Portfolio/. .
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'add TSUBAKI portfolio source'
+          git push
