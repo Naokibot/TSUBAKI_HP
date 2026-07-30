@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="t d">
-  <title id="t">TSUBAKI team profile image</title>
+  <title id="t">TSUBAKI Tech team profile image</title>
   <desc id="d">A dark circular team profile image with a red camellia symbol.</desc>
   <defs>
     <radialGradient id="bg" cx="35%" cy="25%" r="80%"><stop stop-color="#353a4a"/><stop offset="1" stop-color="#11131a"/></radialGradient>
@@ -15,5 +15,5 @@
     <path d="M0-145C75-145 116-99 116-44C116 4 77 42 0 84C-77 42-116 4-116-44C-116-99-75-145 0-145Z" fill="url(#p)" opacity=".48" transform="rotate(288)"/>
     <circle r="42" fill="#ffd66b"/>
   </g>
-  <text x="320" y="535" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-size="58" font-weight="800" letter-spacing="12" fill="#fff">TSUBAKI</text>
+  <text x="320" y="535" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui" font-size="48" font-weight="800" letter-spacing="5" fill="#fff">TSUBAKI Tech</text>
 </svg>
