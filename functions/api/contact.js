@@ -70,7 +70,7 @@ export async function onRequestPost(context) {
       from: env.CONTACT_FROM_EMAIL,
       to: [env.CONTACT_TO_EMAIL],
       reply_to: email,
-      subject: `[TSUBAKI Portfolio] Message from ${name}`,
+      subject: `[TSUBAKI Tech Portfolio] Message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nOrganization: ${organization || '-'}\nLocale: ${locale || '-'}\n\n${message}`
     })
   });
