@@ -5,12 +5,12 @@
   "type": "module",
   "description": "Dependency-free bilingual portfolio site for the TSUBAKI Tech team.",
   "scripts": {
-    "build": "node scripts/build.mjs",
-    "dev": "node scripts/build.mjs && node scripts/serve.mjs",
+    "build": "node scripts/build.mjs && node scripts/update-og-references.mjs",
+    "dev": "npm run build && node scripts/serve.mjs",
     "serve": "node scripts/serve.mjs",
-    "check": "node --check src/app.js && node --check scripts/build.mjs && node --check scripts/serve.mjs && node --check functions/api/contact.js",
-    "preview": "node scripts/build.mjs && node scripts/serve.mjs",
-    "build:pages": "SITE_BASE_URL=https://naokibot.github.io/TSUBAKI_HP/ SITE_BASE_PATH=/TSUBAKI_HP node scripts/build.mjs"
+    "check": "node --check src/app.js && node --check scripts/build.mjs && node --check scripts/serve.mjs && node --check scripts/update-og-references.mjs && node --check functions/api/contact.js",
+    "preview": "npm run build && node scripts/serve.mjs",
+    "build:pages": "SITE_BASE_URL=https://naokibot.github.io/TSUBAKI_HP/ SITE_BASE_PATH=/TSUBAKI_HP node scripts/build.mjs && node scripts/update-og-references.mjs"
   },
   "engines": {
     "node": ">=20"
