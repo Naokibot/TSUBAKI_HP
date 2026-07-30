@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "why-bytequest",
+    "date": "2026-07-30",
+    "title": {"ja": "なぜJavaの『中』を見えるようにするのか", "en": "Why make the inside of Java visible?"},
+    "excerpt": {
+      "ja": "変数、参照、ヒープを暗記ではなく、動きとして理解するためにByteQuestを設計しました。",
+      "en": "We designed ByteQuest so variables, references, and the heap can be understood as movement rather than memorized terms."
+    },
+    "tags": ["Java", "Education", "ByteQuest"],
+    "content": {
+      "ja": "# 出力だけでは分からない\n\nJavaを学び始めたとき、コードと出力の関係は分かっても、途中で何が起きているかは見えません。特に参照型では、`b = a`が値のコピーなのか、同じオブジェクトへの道を増やすのかが混乱しやすいです。\n\n## 世界として表現する\n\nByteQuestでは、スタックを建物、ヒープを街、参照を光の線として表現します。正解を見せるだけでなく、実行前に予想し、どこで予想と実際が分かれたかを確認します。\n\n## 学習効果も測る\n\n作品の完成度だけでなく、使用前後で『なぜその結果になるか』を説明できるようになったかを検証します。",
+      "en": "# Output is not enough\n\nWhen learning Java, the relationship between code and output may be clear while the process in between remains invisible. Reference types are especially confusing: does `b = a` copy a value, or create another path to the same object?\n\n## Representing execution as a world\n\nByteQuest represents the stack as buildings, the heap as a city, and references as beams of light. Learners predict first and then inspect the point where their mental model diverged from actual execution.\n\n## Measuring learning\n\nWe evaluate not only whether the product works but also whether learners can explain why the result occurs after using it."
+    }
+  },
+  {
+    "slug": "user-testing-not-decoration",
+    "date": "2026-07-24",
+    "title": {"ja": "ユーザーテストは最後の飾りではない", "en": "User testing is not final decoration"},
+    "excerpt": {
+      "ja": "制作途中で試してもらうことで、作り手には見えない迷いを発見できます。",
+      "en": "Testing during development reveals moments of hesitation that creators cannot see themselves."
+    },
+    "tags": ["UX", "Testing", "Process"],
+    "content": {
+      "ja": "# 迷った場所を記録する\n\n『使えましたか』だけでは、改善につながる情報が足りません。最初に押した場所、止まった時間、説明を読み飛ばした場所を記録します。\n\n## 小さく試す\n\n完成後に10人へ見せるより、制作途中に2人へ見せて直すことを繰り返す方が、重要な問題を早く見つけられます。\n\n## 数字と言葉を両方残す\n\n正答率や所要時間だけでなく、『何だと思ったか』『なぜ押さなかったか』も残します。",
+      "en": "# Record where people hesitate\n\nAsking only whether a product worked does not provide enough information to improve it. We record the first place users click, where they pause, and which explanation they skip.\n\n## Test small and early\n\nRepeatedly testing with two people during development can reveal important problems earlier than showing the finished product to ten people.\n\n## Keep numbers and words\n\nWe collect accuracy and completion time, but also what users expected and why they avoided an action."
+    }
+  },
+  {
+    "slug": "portfolio-maintenance",
+    "date": "2026-07-18",
+    "title": {"ja": "更新されるポートフォリオの作り方", "en": "How to build a portfolio that stays updated"},
+    "excerpt": {
+      "ja": "ページを直接書き換えず、作品や記事をデータとして管理する構成にしました。",
+      "en": "Projects and articles are managed as data instead of editing each page directly."
+    },
+    "tags": ["Web", "Portfolio", "Static Site"],
+    "content": {
+      "ja": "# 内容と見た目を分ける\n\n作品を追加するたびにHTMLをコピーすると、リンクやデザインが少しずつ壊れます。このサイトでは、作品、スキル、実績、記事をJSONファイルとして管理します。\n\n## ビルドでページを生成する\n\n`npm run build`を実行すると、日本語・英語のトップページ、作品詳細、記事詳細、サイトマップを自動生成します。\n\n## 外部サービスは設定で切り替える\n\nGitHub API、アクセス解析、問い合わせフォームは設定値を追加すると有効になります。秘密鍵はソースコードへ書きません。",
+      "en": "# Separate content from presentation\n\nCopying HTML every time a project is added gradually breaks links and styles. This site stores projects, skills, achievements, and articles as JSON data.\n\n## Generate pages during build\n\nRunning `npm run build` generates Japanese and English home pages, project pages, article pages, and the sitemap.\n\n## Enable external services through configuration\n\nGitHub API, analytics, and the contact form can be enabled with settings. Secret keys are never placed in browser code."
+    }
+  }
+]
