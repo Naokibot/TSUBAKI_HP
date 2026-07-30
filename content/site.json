@@ -1,0 +1,27 @@
+{
+  "name": "TSUBAKI",
+  "tagline": {
+    "ja": "つくることで、学びを変える。",
+    "en": "Changing how we learn by building."
+  },
+  "description": {
+    "ja": "TSUBAKIは、教育・集中・プログラミングの『分かりにくい』を、触って理解できるプロダクトへ変える学生開発チームです。",
+    "en": "TSUBAKI is a student development team turning hard-to-understand ideas in education, focus, and programming into interactive products."
+  },
+  "about": {
+    "ja": "私たちは、日常で感じた小さな不便や学習のつまずきを出発点に、調査、設計、実装、利用者テストまで自分たちで行います。見た目だけではなく、仕組みを説明できるプロダクトを目指しています。",
+    "en": "We start with small frustrations and learning obstacles from everyday life, then handle research, design, implementation, and user testing ourselves. We aim to build products whose mechanisms can be clearly explained, not just attractive interfaces."
+  },
+  "baseUrl": "https://naokibot.github.io/TSUBAKI_HP/",
+  "email": "your-email@example.com",
+  "githubUser": "Naokibot",
+  "githubUrl": "https://github.com/Naokibot",
+  "xUrl": "https://x.com/your_account",
+  "instagramUrl": "https://instagram.com/your_account",
+  "contactEndpoint": "/api/contact",
+  "turnstileSiteKey": "",
+  "plausibleDomain": "",
+  "gaMeasurementId": "",
+  "copyrightYear": 2026,
+  "basePath": ""
+}
