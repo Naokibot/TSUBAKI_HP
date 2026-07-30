@@ -50,5 +50,5 @@ createServer(async (request, response) => {
   }
 }).listen(port, () => {
   const pathLabel = basePath || '/';
-  console.log(`TSUBAKI Portfolio is running at http://localhost:${port}${pathLabel.endsWith('/') ? pathLabel : `${pathLabel}/`}`);
+  console.log(`TSUBAKI Tech Portfolio is running at http://localhost:${port}${pathLabel.endsWith('/') ? pathLabel : `${pathLabel}/`}`);
 });
