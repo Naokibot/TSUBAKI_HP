@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#171b2b"/><stop offset="1" stop-color="#311326"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="12" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  <rect width="1200" height="675" fill="url(#g)"/>
+  <g opacity=".15" stroke="#fff"><path d="M80 120H1120M80 220H1120M80 320H1120M80 420H1120M80 520H1120"/><path d="M180 70V600M380 70V600M580 70V600M780 70V600M980 70V600"/></g>
+  <g transform="translate(150 160)">
+    <rect width="280" height="330" rx="28" fill="#20283d" stroke="#657195" stroke-width="3"/>
+    <rect x="28" y="35" width="224" height="64" rx="12" fill="#2c3753"/>
+    <rect x="28" y="125" width="224" height="64" rx="12" fill="#2c3753"/>
+    <rect x="28" y="215" width="224" height="64" rx="12" fill="#2c3753"/>
+    <text x="140" y="310" fill="#b9c5eb" text-anchor="middle" font-family="monospace" font-size="22">STACK</text>
+  </g>
+  <g transform="translate(715 155)">
+    <rect width="320" height="230" rx="32" fill="#492039" stroke="#ff6682" stroke-width="4" filter="url(#glow)"/>
+    <text x="160" y="80" fill="#fff" text-anchor="middle" font-family="system-ui" font-weight="700" font-size="34">Player #1</text>
+    <text x="160" y="142" fill="#ffd56a" text-anchor="middle" font-family="monospace" font-size="28">name = "Sam"</text>
+    <text x="160" y="205" fill="#ffadc0" text-anchor="middle" font-family="monospace" font-size="20">HEAP OBJECT</text>
+  </g>
+  <path d="M430 225C560 190 620 205 715 240" fill="none" stroke="#66ddff" stroke-width="8" filter="url(#glow)"/>
+  <path d="M430 315C570 330 640 295 715 280" fill="none" stroke="#66ddff" stroke-width="8" filter="url(#glow)"/>
+  <text x="575" y="115" fill="#fff" text-anchor="middle" font-family="system-ui" font-size="58" font-weight="800">ByteQuest</text>
+  <text x="600" y="590" fill="#cbd3ef" text-anchor="middle" font-family="system-ui" font-size="28">Walk through Java execution</text>
+</svg>
