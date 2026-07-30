@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#11131a"/><stop offset=".6" stop-color="#1d2230"/><stop offset="1" stop-color="#391427"/></linearGradient><linearGradient id="p" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff637d"/><stop offset="1" stop-color="#aa123f"/></linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1020" cy="90" r="240" fill="#ff5977" opacity=".07"/>
+  <circle cx="1040" cy="540" r="320" fill="#6c7dff" opacity=".06"/>
+  <g transform="translate(210 315)">
+    <path d="M0-150C76-150 122-101 122-42C122 7 80 48 0 90C-80 48-122 7-122-42C-122-101-76-150 0-150Z" fill="url(#p)"/>
+    <path d="M0-150C76-150 122-101 122-42C122 7 80 48 0 90C-80 48-122 7-122-42C-122-101-76-150 0-150Z" fill="url(#p)" opacity=".82" transform="rotate(72)"/>
+    <path d="M0-150C76-150 122-101 122-42C122 7 80 48 0 90C-80 48-122 7-122-42C-122-101-76-150 0-150Z" fill="url(#p)" opacity=".66" transform="rotate(144)"/>
+    <path d="M0-150C76-150 122-101 122-42C122 7 80 48 0 90C-80 48-122 7-122-42C-122-101-76-150 0-150Z" fill="url(#p)" opacity=".52" transform="rotate(216)"/>
+    <path d="M0-150C76-150 122-101 122-42C122 7 80 48 0 90C-80 48-122 7-122-42C-122-101-76-150 0-150Z" fill="url(#p)" opacity=".42" transform="rotate(288)"/>
+    <circle r="44" fill="#ffd56a"/>
+  </g>
+  <text x="410" y="282" font-family="Inter, system-ui, sans-serif" font-size="92" font-weight="850" letter-spacing="12" fill="#fff">TSUBAKI</text>
+  <text x="416" y="362" font-family="Inter, system-ui, sans-serif" font-size="38" font-weight="550" fill="#f0f2f8">Changing how we learn by building.</text>
+  <text x="418" y="430" font-family="Inter, system-ui, sans-serif" font-size="25" fill="#aeb7cb">Education · Visualization · Creative Coding</text>
+</svg>
