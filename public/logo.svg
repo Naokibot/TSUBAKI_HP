@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 72" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 72" role="img" aria-labelledby="title desc">
   <title id="title">TSUBAKI Tech logo</title>
   <desc id="desc">A geometric camellia flower followed by the TSUBAKI Tech wordmark.</desc>
   <defs>
@@ -15,5 +15,5 @@
     <path d="M0-28C14-28 23-20 23-9C23 0 15 7 0 15C-15 7-23 0-23-9C-23-20-14-28 0-28Z" fill="url(#g)" opacity=".68" transform="rotate(288)"/>
     <circle r="8" fill="#ffd369"/>
   </g>
-  <text x="78" y="47" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="29" font-weight="800" letter-spacing="3" fill="currentColor">TSUBAKI Tech</text>
+  <text x="78" y="47" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="2" fill="currentColor">TSUBAKI Tech</text>
 </svg>
