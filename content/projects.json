@@ -1,0 +1,83 @@
+[
+  {
+    "slug": "bytequest",
+    "title": {"ja": "ByteQuest", "en": "ByteQuest"},
+    "subtitle": {"ja": "Javaの中を歩いて理解する学習アプリ", "en": "Explore the inside of Java as an interactive world"},
+    "summary": {
+      "ja": "スタック、ヒープ、参照、メソッド呼び出しを2D世界とタイムラインで可視化するJava学習アプリです。",
+      "en": "A Java learning app that visualizes the stack, heap, references, and method calls as a 2D world and rewindable timeline."
+    },
+    "challenge": {
+      "ja": "Java初学者は、画面に出る結果は分かっても、変数やオブジェクトが内部でどう動くかを想像しにくいという課題があります。",
+      "en": "Java beginners can often read the output but struggle to imagine how variables and objects move internally."
+    },
+    "solution": {
+      "ja": "実行イベントを独自タイムラインへ変換し、スタックを建物の階層、ヒープを街、参照を光の線として表示します。予想問題と誤概念診断も組み合わせます。",
+      "en": "Execution events are converted into a custom timeline. Stack frames become building floors, heap objects become city structures, and references become beams of light, combined with prediction tasks and misconception diagnosis."
+    },
+    "highlights": {
+      "ja": ["実行イベント単位の巻き戻し", "参照共有の可視化", "Story / JVMモード", "安全な学習用コード解析"],
+      "en": ["Event-by-event rewind", "Reference-sharing visualization", "Story and JVM modes", "Safe educational code analysis"]
+    },
+    "technologies": ["Java 21", "JavaFX", "JavaParser", "ASM", "Gradle", "JUnit"],
+    "status": {"ja": "MVP開発中", "en": "MVP in development"},
+    "year": "2026",
+    "cover": "/projects/bytequest.svg",
+    "github": "https://github.com/Naokibot/TSUBAKI__U22",
+    "demo": ""
+  },
+  {
+    "slug": "screenless",
+    "title": {"ja": "TSUBAKI ScreenLess", "en": "TSUBAKI ScreenLess"},
+    "subtitle": {"ja": "やるべきことへ戻るためのスクリーン管理", "en": "Screen management that helps users return to what matters"},
+    "summary": {
+      "ja": "アプリ単位の利用状況を可視化し、単純な禁止ではなく、やるべきことへ戻るきっかけを設計するクロスプラットフォーム構想です。",
+      "en": "A cross-platform concept that visualizes app usage and creates prompts to return to meaningful tasks instead of simply blocking screens."
+    },
+    "challenge": {
+      "ja": "既存のスクリーンタイム管理は、時間制限やアプリ遮断が中心で、なぜ使い続けたか、次に何をすればよいかまで支援しない場合があります。",
+      "en": "Many screen-time tools focus on limits and blocking without addressing why use continued or what the user should do next."
+    },
+    "solution": {
+      "ja": "利用のきっかけ、目的、終了条件を短く記録し、タスクや生活リズムと結び付けて『次の一歩』を提示します。",
+      "en": "The app briefly captures triggers, purpose, and exit conditions, connects them to tasks and routines, and presents a practical next step."
+    },
+    "highlights": {
+      "ja": ["アプリ横断の利用分析", "禁止ではなく復帰を支援", "ローカルファースト設計", "Windows / Linux / モバイル構想"],
+      "en": ["Cross-app usage analysis", "Supports recovery instead of punishment", "Local-first design", "Windows, Linux, and mobile roadmap"]
+    },
+    "technologies": ["Kotlin", "Swift", "Rust", "Flutter", "SQLite"],
+    "status": {"ja": "プロトタイプ", "en": "Prototype"},
+    "year": "2026",
+    "cover": "/projects/screenless.svg",
+    "github": "https://github.com/Naokibot",
+    "demo": ""
+  },
+  {
+    "slug": "solidproof",
+    "title": {"ja": "SolidProof", "en": "SolidProof"},
+    "subtitle": {"ja": "立体操作を数学的な証明へ変換", "en": "Compile 3D manipulation into mathematical proof"},
+    "summary": {
+      "ja": "立体を回転・切断するだけでなく、その操作を根拠カードと結び付け、証明の穴を検出する学習ツールです。",
+      "en": "A learning tool that links 3D rotation and slicing to proof cards and detects missing logical steps."
+    },
+    "challenge": {
+      "ja": "3D表示で答えが分かっても、なぜその断面になるかを言葉と定理で説明できないことがあります。",
+      "en": "A learner may see the correct cross-section in 3D yet still be unable to explain why it appears using definitions and theorems."
+    },
+    "solution": {
+      "ja": "図形上の辺・面と、証明ブロックを双方向で対応させ、論理の飛躍や条件不足を可視化します。",
+      "en": "Edges and faces are connected bidirectionally to proof blocks, exposing logical jumps and missing conditions."
+    },
+    "highlights": {
+      "ja": ["3Dと証明の双方向ハイライト", "切断面の正確計算", "証明グラフ検証", "反例生成構想"],
+      "en": ["Bidirectional 3D-proof highlighting", "Exact cross-section calculation", "Proof graph validation", "Counterexample generation roadmap"]
+    },
+    "technologies": ["TypeScript", "Three.js", "Rust / WASM", "Geometry Engine"],
+    "status": {"ja": "研究・設計中", "en": "Research and design"},
+    "year": "2026",
+    "cover": "/projects/solidproof.svg",
+    "github": "https://github.com/Naokibot",
+    "demo": ""
+  }
+]
