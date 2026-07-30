@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#edf7f5"/><stop offset="1" stop-color="#d8e4ff"/></linearGradient><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff5f7b"/><stop offset="1" stop-color="#b01949"/></linearGradient></defs>
+  <rect width="1200" height="675" fill="url(#g)"/>
+  <circle cx="1030" cy="115" r="190" fill="#fff" opacity=".5"/><circle cx="120" cy="600" r="250" fill="#fff" opacity=".4"/>
+  <g transform="translate(400 82)">
+    <rect width="400" height="515" rx="54" fill="#191d2a"/>
+    <rect x="22" y="22" width="356" height="471" rx="38" fill="#f9fbff"/>
+    <rect x="145" y="36" width="110" height="16" rx="8" fill="#252a38"/>
+    <circle cx="200" cy="175" r="84" fill="none" stroke="#dfe4ef" stroke-width="28"/>
+    <path d="M200 91A84 84 0 0 1 271 220" fill="none" stroke="url(#a)" stroke-width="28" stroke-linecap="round"/>
+    <text x="200" y="190" text-anchor="middle" fill="#1c2130" font-family="system-ui" font-size="44" font-weight="800">42%</text>
+    <rect x="70" y="305" width="260" height="68" rx="20" fill="#fff" stroke="#e5e8f0"/>
+    <circle cx="108" cy="339" r="16" fill="#ff5f7b"/><rect x="138" y="326" width="136" height="12" rx="6" fill="#303748"/><rect x="138" y="348" width="92" height="9" rx="5" fill="#adb5c7"/>
+    <rect x="70" y="392" width="260" height="68" rx="20" fill="#fff" stroke="#e5e8f0"/>
+    <circle cx="108" cy="426" r="16" fill="#6d85ff"/><rect x="138" y="413" width="145" height="12" rx="6" fill="#303748"/><rect x="138" y="435" width="110" height="9" rx="5" fill="#adb5c7"/>
+  </g>
+  <text x="600" y="54" text-anchor="middle" fill="#1d2230" font-family="system-ui" font-size="50" font-weight="800">TSUBAKI ScreenLess</text>
+  <text x="600" y="646" text-anchor="middle" fill="#4b5368" font-family="system-ui" font-size="27">Return to what matters</text>
+</svg>
