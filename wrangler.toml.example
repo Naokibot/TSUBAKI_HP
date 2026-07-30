@@ -1,0 +1,8 @@
+name = "tsubaki-portfolio"
+compatibility_date = "2026-07-30"
+pages_build_output_dir = "dist"
+
+# Add a KV binding through the Cloudflare dashboard or uncomment after creating it.
+# [[kv_namespaces]]
+# binding = "CONTACT_RATE_LIMIT"
+# id = "YOUR_KV_NAMESPACE_ID"
