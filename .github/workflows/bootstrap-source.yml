@@ -1,3 +1,4 @@
+# Triggered after verified archive upload.
 name: Bootstrap source
 
 on:
