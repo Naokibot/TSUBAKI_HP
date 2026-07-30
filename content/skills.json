@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Java",
+    "level": 86,
+    "icon": "☕",
+    "description": {
+      "ja": "JavaFX、Gradle、JVM・バイトコード解析、デスクトップアプリ開発",
+      "en": "JavaFX, Gradle, JVM and bytecode analysis, desktop application development"
+    }
+  },
+  {
+    "name": "TypeScript / JavaScript",
+    "level": 82,
+    "icon": "TS",
+    "description": {
+      "ja": "Webアプリ、PWA、インタラクティブな可視化",
+      "en": "Web apps, PWAs, and interactive visualization"
+    }
+  },
+  {
+    "name": "UI / UX Design",
+    "level": 78,
+    "icon": "✦",
+    "description": {
+      "ja": "情報設計、レスポンシブUI、アクセシビリティ、利用者テスト",
+      "en": "Information design, responsive UI, accessibility, and user testing"
+    }
+  },
+  {
+    "name": "GitHub / CI",
+    "level": 76,
+    "icon": "⌘",
+    "description": {
+      "ja": "Git、GitHub Actions、レビュー、リリース管理",
+      "en": "Git, GitHub Actions, review workflows, and release management"
+    }
+  },
+  {
+    "name": "Research & Testing",
+    "level": 80,
+    "icon": "◎",
+    "description": {
+      "ja": "既存サービス調査、仮説検証、ユーザーテスト、改善記録",
+      "en": "Competitive research, hypothesis testing, user tests, and improvement logs"
+    }
+  },
+  {
+    "name": "Creative Coding",
+    "level": 74,
+    "icon": "◈",
+    "description": {
+      "ja": "ゲーム表現、教育コンテンツ、アニメーション、データ可視化",
+      "en": "Game-like experiences, educational content, animation, and data visualization"
+    }
+  }
+]
