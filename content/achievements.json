@@ -1,0 +1,20 @@
+[
+  {
+    "year": "2026",
+    "title": {"ja": "U-22プログラミング・コンテスト応募作品開発", "en": "U-22 Programming Contest entry development"},
+    "detail": {"ja": "Javaの実行過程を可視化するByteQuestのMVPと検証計画を制作。", "en": "Developing the ByteQuest MVP and its validation plan for visualizing Java execution."},
+    "type": {"ja": "コンテスト", "en": "Contest"}
+  },
+  {
+    "year": "2026",
+    "title": {"ja": "クロスプラットフォーム学習・集中支援の研究", "en": "Cross-platform learning and focus research"},
+    "detail": {"ja": "スクリーン管理、学習可視化、利用者テストを組み合わせた複数のプロトタイプを設計。", "en": "Designed prototypes combining screen management, learning visualization, and user testing."},
+    "type": {"ja": "開発", "en": "Development"}
+  },
+  {
+    "year": "Ongoing",
+    "title": {"ja": "資格・受賞歴を追加できます", "en": "Add qualifications and awards here"},
+    "detail": {"ja": "content/achievements.jsonを編集するだけで、実績欄をいつでも更新できます。", "en": "Edit content/achievements.json to update this timeline at any time."},
+    "type": {"ja": "更新方法", "en": "How to update"}
+  }
+]
