@@ -55,11 +55,11 @@ function header(lang) {
   const l = labels[lang];
   const other = lang === 'ja' ? 'en' : 'ja';
   const otherUrl = lang === 'ja' ? route('en') : route('ja');
-  return `<a class="skip" href="#main">Skip to content</a><header class="header"><div class="wrap nav"><a class="brand" href="${route(lang)}"><img src="${u('/logo.svg')}" alt="TSUBAKI"></a><button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav><a href="${route(lang)}#about">${l.about}</a><a href="${route(lang)}#projects">${l.projects}</a><a href="${route(lang)}#blog">${l.blog}</a><a href="${route(lang)}#contact">${l.contact}</a><a class="lang" href="${otherUrl}" hreflang="${other}">${other.toUpperCase()}</a><button class="theme" aria-label="Toggle dark mode">◐</button></nav></div></header>`;
+  return `<a class="skip" href="#main">Skip to content</a><header class="header"><div class="wrap nav"><a class="brand" href="${route(lang)}"><img src="${u('/logo.svg')}" alt="${esc(site.name)}"></a><button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button><nav><a href="${route(lang)}#about">${l.about}</a><a href="${route(lang)}#projects">${l.projects}</a><a href="${route(lang)}#blog">${l.blog}</a><a href="${route(lang)}#contact">${l.contact}</a><a class="lang" href="${otherUrl}" hreflang="${other}">${other.toUpperCase()}</a><button class="theme" aria-label="Toggle dark mode">◐</button></nav></div></header>`;
 }
 
 function footer(lang) {
-  return `<footer><div class="wrap footer-grid"><div><img class="footer-logo" src="${u('/logo.svg')}" alt="TSUBAKI"><p>${esc(t(site.tagline, lang))}</p></div><div class="social"><a href="${esc(site.githubUrl)}">GitHub</a><a href="${esc(site.xUrl)}">X</a><a href="${esc(site.instagramUrl)}">Instagram</a><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></div></div><p class="copyright">© ${site.copyrightYear} TSUBAKI</p></footer>`;
+  return `<footer><div class="wrap footer-grid"><div><img class="footer-logo" src="${u('/logo.svg')}" alt="${esc(site.name)}"><p>${esc(t(site.tagline, lang))}</p></div><div class="social"><a href="${esc(site.githubUrl)}">GitHub</a><a href="${esc(site.xUrl)}">X</a><a href="${esc(site.instagramUrl)}">Instagram</a><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></div></div><p class="copyright">© ${site.copyrightYear} ${esc(site.name)}</p></footer>`;
 }
 
 function shell(lang, title, description, pathname, content, type = 'website', image = '/og-image.png') {
@@ -73,8 +73,8 @@ const postCard = (p, lang) => `<article class="card post-card reveal"><div class
 function home(lang) {
   const l = labels[lang];
   const turnstile = site.turnstileSiteKey ? `<div class="cf-turnstile" data-sitekey="${esc(site.turnstileSiteKey)}"></div>` : '';
-  const content = `<section class="hero"><div class="wrap hero-grid"><div class="hero-copy reveal"><div class="eyebrow">STUDENT DEVELOPMENT TEAM</div><h1>${esc(t(site.tagline,lang))}</h1><p>${esc(t(site.description,lang))}</p><div class="actions"><a class="button primary" href="#projects">${l.projects}</a><a class="button" href="#contact">${l.contact}</a></div></div><div class="profile reveal"><img src="${u('/profile.svg')}" alt="TSUBAKI team profile"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div></div></div></section>
-  <section id="about"><div class="wrap split reveal"><div><div class="eyebrow">ABOUT TSUBAKI</div><h2>${l.about}</h2></div><p class="lead">${esc(t(site.about,lang))}</p></div></section>
+  const content = `<section class="hero"><div class="wrap hero-grid"><div class="hero-copy reveal"><div class="eyebrow">STUDENT DEVELOPMENT TEAM</div><h1>${esc(t(site.tagline,lang))}</h1><p>${esc(t(site.description,lang))}</p><div class="actions"><a class="button primary" href="#projects">${l.projects}</a><a class="button" href="#contact">${l.contact}</a></div></div><div class="profile reveal"><img src="${u('/profile.svg')}" alt="${esc(site.name)} team profile"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div></div></div></section>
+  <section id="about"><div class="wrap split reveal"><div><div class="eyebrow">ABOUT ${esc(site.name)}</div><h2>${l.about}</h2></div><p class="lead">${esc(t(site.about,lang))}</p></div></section>
   <section id="skills" class="soft"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">CAPABILITIES</div><h2>${l.skills}</h2></div></div><div class="skill-grid">${skills.map((s)=>`<article class="skill reveal"><div class="skill-top"><span class="skill-icon">${esc(s.icon)}</span><strong>${esc(s.name)}</strong><span>${s.level}%</span></div><p>${esc(t(s.description,lang))}</p><div class="meter"><i style="--level:${s.level}%"></i></div></article>`).join('')}</div></div></section>
   <section id="projects"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">SELECTED WORK</div><h2>${l.projects}</h2></div></div><div class="project-grid">${projects.map((p)=>projectCard(p,lang)).join('')}</div></div></section>
   <section id="achievements" class="soft"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">MILESTONES</div><h2>${l.achievements}</h2></div></div><div class="timeline">${achievements.map((a)=>`<article class="timeline-item reveal"><div class="year">${esc(a.year)}</div><div><span class="tag">${esc(t(a.type,lang))}</span><h3>${esc(t(a.title,lang))}</h3><p>${esc(t(a.detail,lang))}</p></div></article>`).join('')}</div></div></section>
@@ -87,7 +87,7 @@ function home(lang) {
 function projectPage(project, lang) {
   const l = labels[lang];
   const content = `<section class="detail-hero"><div class="wrap"><a class="back" href="${route(lang)}#projects">← ${l.allProjects}</a><div class="detail-grid"><div><div class="eyebrow">${esc(project.year)} · ${esc(t(project.status,lang))}</div><h1>${esc(t(project.title,lang))}</h1><p class="lead">${esc(t(project.subtitle,lang))}</p>${chips(project.technologies)}<div class="actions"><a class="button primary" href="${esc(project.github)}">GitHub</a>${project.demo?`<a class="button" href="${esc(project.demo)}">Demo</a>`:''}</div></div><img src="${u(project.cover)}" alt="${esc(t(project.title,lang))}"></div></div></section><section><div class="wrap prose-grid"><article class="prose reveal"><h2>${l.challenge}</h2><p>${esc(t(project.challenge,lang))}</p><h2>${l.solution}</h2><p>${esc(t(project.solution,lang))}</p></article><aside class="card reveal"><div class="card-body"><h2>${l.highlights}</h2><ul>${t(project.highlights,lang).map((x)=>`<li>${esc(x)}</li>`).join('')}</ul><h2>${l.technologies}</h2>${chips(project.technologies)}</div></aside></div></section>`;
-  return shell(lang, `${t(project.title,lang)} — TSUBAKI`, t(project.summary,lang), `${langRoot(lang)}projects/${project.slug}/`, content, 'article', project.cover);
+  return shell(lang, `${t(project.title,lang)} — ${site.name}`, t(project.summary,lang), `${langRoot(lang)}projects/${project.slug}/`, content, 'article', project.cover);
 }
 
 function markdown(text) {
@@ -100,7 +100,7 @@ function markdown(text) {
 function postPage(post, lang) {
   const l=labels[lang];
   const content=`<section class="article-hero"><div class="narrow"><a class="back" href="${route(lang)}#blog">← ${l.allPosts}</a><time datetime="${post.date}">${post.date}</time><h1>${esc(t(post.title,lang))}</h1><p class="lead">${esc(t(post.excerpt,lang))}</p>${chips(post.tags)}</div></section><article class="narrow article-body reveal">${markdown(t(post.content,lang))}</article>`;
-  return shell(lang, `${t(post.title,lang)} — TSUBAKI`, t(post.excerpt,lang), `${langRoot(lang)}blog/${post.slug}/`, content, 'article');
+  return shell(lang, `${t(post.title,lang)} — ${site.name}`, t(post.excerpt,lang), `${langRoot(lang)}blog/${post.slug}/`, content, 'article');
 }
 
 async function writePage(relative, html) {
@@ -112,7 +112,7 @@ await writePage('', home('ja'));
 await writePage('en', home('en'));
 for (const p of projects) for (const lang of ['ja','en']) await writePage(path.join(lang==='en'?'en':'','projects',p.slug), projectPage(p,lang));
 for (const p of posts) for (const lang of ['ja','en']) await writePage(path.join(lang==='en'?'en':'','blog',p.slug), postPage(p,lang));
-await writeFile(path.join(dist,'404.html'), shell('ja','404 — TSUBAKI','Page not found','/404.html','<section class="not-found"><div class="wrap"><h1>404</h1><p>ページが見つかりません。</p><a class="button primary" href="'+route('ja')+'">Home</a></div></section>'));
+await writeFile(path.join(dist,'404.html'), shell('ja',`404 — ${site.name}`,'Page not found','/404.html','<section class="not-found"><div class="wrap"><h1>404</h1><p>ページが見つかりません。</p><a class="button primary" href="'+route('ja')+'">Home</a></div></section>'));
 const paths=['/','/en/',...projects.flatMap((p)=>[`/projects/${p.slug}/`,`/en/projects/${p.slug}/`]),...posts.flatMap((p)=>[`/blog/${p.slug}/`,`/en/blog/${p.slug}/`])];
 await writeFile(path.join(dist,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${paths.map((x)=>`<url><loc>${abs(x)}</loc></url>`).join('')}</urlset>`);
 await writeFile(path.join(dist,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${abs('/sitemap.xml')}\n`);
