@@ -1,12 +1,12 @@
 const root = document.documentElement;
 
-const savedTheme = localStorage.getItem('tsubaki-theme');
+const savedTheme = localStorage.getItem('hotaru-ascend-theme');
 const preferredTheme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 root.dataset.theme = savedTheme || preferredTheme;
 
 document.querySelector('.theme')?.addEventListener('click', () => {
   root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-  localStorage.setItem('tsubaki-theme', root.dataset.theme);
+  localStorage.setItem('hotaru-ascend-theme', root.dataset.theme);
 });
 
 const menuButton = document.querySelector('.nav-toggle');
