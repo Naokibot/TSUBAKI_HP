@@ -59,7 +59,8 @@ export async function onRequestPost(context) {
   const turnstile = await validateTurnstile(body['cf-turnstile-response'], env.TURNSTILE_SECRET, ip);
   if (!turnstile.success) return json({ error: 'Spam verification failed.' }, 403);
 
-  if (!env.RESEND_API_KEY || !env.CONTACT_TO_EMAIL || !env.CONTACT_FROM_EMAIL) {
+  const contactToEmail = env.CONTACT_TO_EMAIL || 'tsubaki.tech.jp@gmail.com';
+  if (!env.RESEND_API_KEY || !env.CONTACT_FROM_EMAIL) {
     return json({ error: 'Contact delivery is not configured. Please use the displayed email address.' }, 503);
   }
 
@@ -68,7 +69,7 @@ export async function onRequestPost(context) {
     headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
     body: JSON.stringify({
       from: env.CONTACT_FROM_EMAIL,
-      to: [env.CONTACT_TO_EMAIL],
+      to: [contactToEmail],
       reply_to: email,
       subject: `[TSUBAKI Tech Portfolio] Message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nOrganization: ${organization || '-'}\nLocale: ${locale || '-'}\n\n${message}`
