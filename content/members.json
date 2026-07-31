@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "naokibot",
+    "icon": "/members/naokibot.svg",
+    "name": {
+      "ja": "Naokibot",
+      "en": "Naokibot",
+      "ru": "Naokibot",
+      "zh-TW": "Naokibot",
+      "ko": "Naokibot",
+      "hi": "Naokibot",
+      "fr": "Naokibot",
+      "de": "Naokibot"
+    },
+    "role": {
+      "ja": "開発メンバー",
+      "en": "Developer",
+      "ru": "Разработчик",
+      "zh-TW": "開發成員",
+      "ko": "개발 멤버",
+      "hi": "डेवलपर",
+      "fr": "Développeur",
+      "de": "Entwickler"
+    },
+    "summary": {
+      "ja": "プログラミングエディターと学習プロダクトの設計・開発に取り組んでいます。",
+      "en": "Works on the design and development of programming editors and learning products.",
+      "ru": "Занимается проектированием и разработкой программных редакторов и образовательных продуктов.",
+      "zh-TW": "投入程式設計編輯器與學習產品的設計和開發。",
+      "ko": "프로그래밍 에디터와 학습 제품의 설계 및 개발을 진행하고 있습니다.",
+      "hi": "प्रोग्रामिंग एडिटर और शिक्षण उत्पादों के डिज़ाइन व विकास पर काम करते हैं।",
+      "fr": "Travaille à la conception et au développement d’éditeurs de programmation et de produits d’apprentissage.",
+      "de": "Arbeitet an der Konzeption und Entwicklung von Programmiereditoren und Lernprodukten."
+    },
+    "bio": {
+      "ja": "2025年から、次世代の学習体験を目指すプログラミングエディターを中心に、アイデアの整理、UI設計、実装、検証まで取り組んでいます。",
+      "en": "Since 2025, has worked on a programming editor for the next generation of learning experiences, covering concept development, interface design, implementation, and testing.",
+      "ru": "С 2025 года работает над программным редактором для нового поколения образовательных продуктов — от разработки концепции и интерфейса до реализации и тестирования.",
+      "zh-TW": "自 2025 年起，以面向下一代學習體驗的程式設計編輯器為核心，參與概念整理、介面設計、實作與驗證。",
+      "ko": "2025년부터 차세대 학습 경험을 위한 프로그래밍 에디터를 중심으로 아이디어 정리, UI 설계, 구현, 검증까지 진행하고 있습니다.",
+      "hi": "2025 से अगली पीढ़ी के सीखने के अनुभवों के लिए प्रोग्रामिंग एडिटर पर काम कर रहे हैं, जिसमें अवधारणा, इंटरफ़ेस डिज़ाइन, कार्यान्वयन और परीक्षण शामिल हैं।",
+      "fr": "Depuis 2025, travaille principalement sur un éditeur de programmation destiné à la prochaine génération d’expériences d’apprentissage, de la définition du concept aux tests, en passant par l’interface et l’implémentation.",
+      "de": "Arbeitet seit 2025 an einem Programmiereditor für die nächste Generation von Lernerfahrungen – von der Konzeptentwicklung über das UI-Design und die Umsetzung bis zur Erprobung."
+    },
+    "skills": [
+      "Product Design",
+      "Programming",
+      "UI / UX"
+    ],
+    "github": "https://github.com/Naokibot"
+  }
+]
