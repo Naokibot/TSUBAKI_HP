@@ -1,56 +1,8 @@
 [
-  {
-    "name": "Java",
-    "level": 86,
-    "icon": "☕",
-    "description": {
-      "ja": "JavaFX、Gradle、JVM・バイトコード解析、デスクトップアプリ開発",
-      "en": "JavaFX, Gradle, JVM and bytecode analysis, desktop application development"
-    }
-  },
-  {
-    "name": "TypeScript / JavaScript",
-    "level": 82,
-    "icon": "TS",
-    "description": {
-      "ja": "Webアプリ、PWA、インタラクティブな可視化",
-      "en": "Web apps, PWAs, and interactive visualization"
-    }
-  },
-  {
-    "name": "UI / UX Design",
-    "level": 78,
-    "icon": "✦",
-    "description": {
-      "ja": "情報設計、レスポンシブUI、アクセシビリティ、利用者テスト",
-      "en": "Information design, responsive UI, accessibility, and user testing"
-    }
-  },
-  {
-    "name": "GitHub / CI",
-    "level": 76,
-    "icon": "⌘",
-    "description": {
-      "ja": "Git、GitHub Actions、レビュー、リリース管理",
-      "en": "Git, GitHub Actions, review workflows, and release management"
-    }
-  },
-  {
-    "name": "Research & Testing",
-    "level": 80,
-    "icon": "◎",
-    "description": {
-      "ja": "既存サービス調査、仮説検証、ユーザーテスト、改善記録",
-      "en": "Competitive research, hypothesis testing, user tests, and improvement logs"
-    }
-  },
-  {
-    "name": "Creative Coding",
-    "level": 74,
-    "icon": "◈",
-    "description": {
-      "ja": "ゲーム表現、教育コンテンツ、アニメーション、データ可視化",
-      "en": "Game-like experiences, educational content, animation, and data visualization"
-    }
-  }
+  {"name":"Java","level":86,"icon":"☕","description":{"ja":"JavaFX、Gradle、JVM・バイトコード解析、デスクトップアプリ開発","en":"JavaFX, Gradle, JVM and bytecode analysis, desktop application development","ru":"JavaFX, Gradle, анализ JVM и байткода, разработка настольных приложений","zh-TW":"JavaFX、Gradle、JVM 與位元組碼分析、桌面應用程式開發","ko":"JavaFX, Gradle, JVM·바이트코드 분석, 데스크톱 앱 개발","hi":"JavaFX, Gradle, JVM और बाइटकोड विश्लेषण, डेस्कटॉप ऐप विकास","fr":"JavaFX, Gradle, analyse de la JVM et du bytecode, développement d’applications de bureau","de":"JavaFX, Gradle, JVM- und Bytecode-Analyse, Entwicklung von Desktop-Anwendungen"}},
+  {"name":"TypeScript / JavaScript","level":82,"icon":"TS","description":{"ja":"Webアプリ、PWA、インタラクティブな可視化","en":"Web apps, PWAs, and interactive visualization","ru":"Веб-приложения, PWA и интерактивная визуализация","zh-TW":"Web 應用程式、PWA 與互動式視覺化","ko":"웹 앱, PWA, 인터랙티브 시각화","hi":"वेब ऐप, PWA और इंटरैक्टिव विज़ुअलाइज़ेशन","fr":"Applications web, PWA et visualisations interactives","de":"Webanwendungen, PWAs und interaktive Visualisierungen"}},
+  {"name":"UI / UX Design","level":78,"icon":"✦","description":{"ja":"情報設計、レスポンシブUI、アクセシビリティ、利用者テスト","en":"Information design, responsive UI, accessibility, and user testing","ru":"Информационная архитектура, адаптивные интерфейсы, доступность и пользовательские тесты","zh-TW":"資訊架構、響應式介面、無障礙設計與使用者測試","ko":"정보 설계, 반응형 UI, 접근성, 사용자 테스트","hi":"सूचना संरचना, रिस्पॉन्सिव UI, अभिगम्यता और उपयोगकर्ता परीक्षण","fr":"Architecture de l’information, interfaces responsives, accessibilité et tests utilisateurs","de":"Informationsarchitektur, responsive Oberflächen, Barrierefreiheit und Nutzertests"}},
+  {"name":"GitHub / CI","level":76,"icon":"⌘","description":{"ja":"Git、GitHub Actions、レビュー、リリース管理","en":"Git, GitHub Actions, review workflows, and release management","ru":"Git, GitHub Actions, процессы ревью и управление релизами","zh-TW":"Git、GitHub Actions、程式碼審查流程與版本發布管理","ko":"Git, GitHub Actions, 리뷰 프로세스, 릴리스 관리","hi":"Git, GitHub Actions, समीक्षा प्रक्रिया और रिलीज़ प्रबंधन","fr":"Git, GitHub Actions, processus de revue et gestion des versions","de":"Git, GitHub Actions, Review-Prozesse und Release-Management"}},
+  {"name":"Research & Testing","level":80,"icon":"◎","description":{"ja":"既存サービス調査、仮説検証、ユーザーテスト、改善記録","en":"Competitive research, hypothesis testing, user tests, and improvement logs","ru":"Анализ существующих решений, проверка гипотез, пользовательские тесты и журнал улучшений","zh-TW":"既有服務調查、假設驗證、使用者測試與改善紀錄","ko":"기존 서비스 조사, 가설 검증, 사용자 테스트, 개선 기록","hi":"मौजूदा सेवाओं का शोध, परिकल्पना परीक्षण, उपयोगकर्ता परीक्षण और सुधार अभिलेख","fr":"Étude des solutions existantes, validation d’hypothèses, tests utilisateurs et suivi des améliorations","de":"Recherche zu bestehenden Lösungen, Hypothesentests, Nutzertests und Verbesserungsdokumentation"}},
+  {"name":"Creative Coding","level":74,"icon":"◈","description":{"ja":"ゲーム表現、教育コンテンツ、アニメーション、データ可視化","en":"Game-like experiences, educational content, animation, and data visualization","ru":"Игровые механики, образовательный контент, анимация и визуализация данных","zh-TW":"遊戲化表現、教育內容、動畫與資料視覺化","ko":"게임형 표현, 교육 콘텐츠, 애니메이션, 데이터 시각화","hi":"गेम-जैसे अनुभव, शैक्षिक सामग्री, एनीमेशन और डेटा विज़ुअलाइज़ेशन","fr":"Expériences ludiques, contenus pédagogiques, animation et visualisation de données","de":"Spielerische Erlebnisse, Lerninhalte, Animation und Datenvisualisierung"}}
 ]
