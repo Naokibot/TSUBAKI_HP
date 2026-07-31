@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 cd /d "%~dp0"
-echo TSUBAKI Tech Portfolio を起動します。
+echo Hotaru Ascend Portfolio を起動します。
 echo.
 node --version
 if errorlevel 1 (
