@@ -8,6 +8,8 @@ TSUBAKI Techの作品、技術記事、スキル、実績を日本語・英語�
 - 作品一覧と詳細ページ
 - ブログ一覧と記事ページ
 - スキル・実績・GitHubリポジトリ表示
+- 固定ナビゲーション、スクロール進捗、ページ上部へ戻るボタン
+- 大型ヒーロー、告知帯、活動領域、実績数値、ニュース一覧
 - ダークモード、レスポンシブ表示
 - SEO、OGP、JSON-LD、サイトマップ
 - Formspreeを使った問い合わせメール送信
@@ -61,7 +63,7 @@ Formspreeでフォームを作成し、表示されたエンドポイントを `
 ## コンテンツの編集
 
 ```text
-content/site.json          サイト名、紹介文、URL、メール、フォーム送信先
+content/site.json          サイト名、紹介文、告知、活動領域、実績数値、URL、メール、フォーム送信先
 content/skills.json        スキル
 content/projects.json      作品と詳細
 content/posts.json         ブログ記事
