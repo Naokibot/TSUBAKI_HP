@@ -1,3 +1,4 @@
+# Retry after completing all verified release payload parts.
 name: Apply release-ready portfolio
 
 on:
