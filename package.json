@@ -5,12 +5,13 @@
   "type": "module",
   "description": "Dependency-free bilingual portfolio site for the TSUBAKI Tech team.",
   "scripts": {
-    "build": "node scripts/build.mjs && node scripts/update-og-references.mjs",
+    "build": "node scripts/build.mjs && node scripts/update-og-references.mjs && node scripts/add-admin.mjs",
     "dev": "npm run build && node scripts/serve.mjs",
     "serve": "node scripts/serve.mjs",
-    "check": "node --check src/app.js && node --check scripts/build.mjs && node --check scripts/serve.mjs && node --check scripts/update-og-references.mjs && node --check functions/api/contact.js",
+    "check": "node --check src/app.js && node --check src/admin.js && node --check scripts/build.mjs && node --check scripts/serve.mjs && node --check scripts/update-og-references.mjs && node --check scripts/add-admin.mjs && node --check functions/api/contact.js && node --check functions/_shared/admin.js && node --check functions/api/admin/login.js && node --check functions/api/admin/session.js && node --check functions/api/admin/logout.js && node --check functions/api/admin/content.js",
     "preview": "npm run build && node scripts/serve.mjs",
-    "build:pages": "SITE_BASE_URL=https://naokibot.github.io/TSUBAKI_HP/ SITE_BASE_PATH=/TSUBAKI_HP node scripts/build.mjs && node scripts/update-og-references.mjs"
+    "build:pages": "SITE_BASE_URL=https://naokibot.github.io/TSUBAKI_HP/ SITE_BASE_PATH=/TSUBAKI_HP node scripts/build.mjs && node scripts/update-og-references.mjs && node scripts/add-admin.mjs",
+    "dev:pages": "npm run build && npx wrangler pages dev dist"
   },
   "engines": {
     "node": ">=20"
