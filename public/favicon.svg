@@ -1,12 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ff5a73"/><stop offset="1" stop-color="#a91340"/></linearGradient></defs>
-  <rect width="64" height="64" rx="16" fill="#11131a"/>
-  <g transform="translate(32 32)">
-    <path d="M0-23C11-23 19-16 19-7C19 1 12 7 0 13C-12 7-19 1-19-7C-19-16-11-23 0-23Z" fill="url(#g)"/>
-    <path d="M0-23C11-23 19-16 19-7C19 1 12 7 0 13C-12 7-19 1-19-7C-19-16-11-23 0-23Z" fill="url(#g)" opacity=".8" transform="rotate(72)"/>
-    <path d="M0-23C11-23 19-16 19-7C19 1 12 7 0 13C-12 7-19 1-19-7C-19-16-11-23 0-23Z" fill="url(#g)" opacity=".65" transform="rotate(144)"/>
-    <path d="M0-23C11-23 19-16 19-7C19 1 12 7 0 13C-12 7-19 1-19-7C-19-16-11-23 0-23Z" fill="url(#g)" opacity=".55" transform="rotate(216)"/>
-    <path d="M0-23C11-23 19-16 19-7C19 1 12 7 0 13C-12 7-19 1-19-7C-19-16-11-23 0-23Z" fill="url(#g)" opacity=".45" transform="rotate(288)"/>
-    <circle r="6" fill="#ffd369"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Hotaru Ascend">
+  <defs>
+    <radialGradient id="g"><stop stop-color="#fffbd1"/><stop offset=".36" stop-color="#ffd85b"/><stop offset="1" stop-color="#d69a12" stop-opacity="0"/></radialGradient>
+    <linearGradient id="w" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dce8ff"/><stop offset="1" stop-color="#768ac9" stop-opacity=".3"/></linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#0d1224"/>
+  <circle cx="36" cy="27" r="25" fill="url(#g)"/>
+  <g transform="translate(35 28) rotate(-18)">
+    <ellipse cx="-11" cy="-5" rx="15" ry="7" fill="url(#w)" transform="rotate(-25)"/>
+    <ellipse cx="11" cy="-5" rx="15" ry="7" fill="url(#w)" transform="rotate(25)"/>
+    <ellipse cy="4" rx="5" ry="12" fill="#14192b"/>
+    <ellipse cy="11" rx="4" ry="7" fill="#ffdd66"/>
+    <circle cy="-7" r="4" fill="#14192b"/>
   </g>
 </svg>
