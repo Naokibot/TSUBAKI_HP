@@ -1,19 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 72" role="img" aria-labelledby="title desc">
-  <title id="title">TSUBAKI Tech logo</title>
-  <desc id="desc">A geometric camellia flower followed by the TSUBAKI Tech wordmark.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 72" role="img" aria-labelledby="title desc">
+  <title id="title">Hotaru Ascend logo</title>
+  <desc id="desc">A glowing firefly rising beside the Hotaru Ascend wordmark.</desc>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ff4d68"/>
-      <stop offset="1" stop-color="#b81745"/>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fff9bd" stop-opacity="1"/>
+      <stop offset=".4" stop-color="#ffd85b" stop-opacity=".78"/>
+      <stop offset="1" stop-color="#ffd85b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#dce8ff" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#7b91d9" stop-opacity=".2"/>
     </linearGradient>
   </defs>
-  <g transform="translate(36 36)">
-    <path d="M0-28C14-28 23-20 23-9C23 0 15 7 0 15C-15 7-23 0-23-9C-23-20-14-28 0-28Z" fill="url(#g)" transform="rotate(0)"/>
-    <path d="M0-28C14-28 23-20 23-9C23 0 15 7 0 15C-15 7-23 0-23-9C-23-20-14-28 0-28Z" fill="url(#g)" opacity=".92" transform="rotate(72)"/>
-    <path d="M0-28C14-28 23-20 23-9C23 0 15 7 0 15C-15 7-23 0-23-9C-23-20-14-28 0-28Z" fill="url(#g)" opacity=".84" transform="rotate(144)"/>
-    <path d="M0-28C14-28 23-20 23-9C23 0 15 7 0 15C-15 7-23 0-23-9C-23-20-14-28 0-28Z" fill="url(#g)" opacity=".76" transform="rotate(216)"/>
-    <path d="M0-28C14-28 23-20 23-9C23 0 15 7 0 15C-15 7-23 0-23-9C-23-20-14-28 0-28Z" fill="url(#g)" opacity=".68" transform="rotate(288)"/>
-    <circle r="8" fill="#ffd369"/>
+  <g transform="translate(36 36) rotate(-18)">
+    <circle r="34" fill="url(#glow)"/>
+    <ellipse cx="-13" cy="-6" rx="18" ry="8" fill="url(#wing)" transform="rotate(-25)"/>
+    <ellipse cx="13" cy="-6" rx="18" ry="8" fill="url(#wing)" transform="rotate(25)"/>
+    <ellipse cy="4" rx="6" ry="14" fill="#171c31"/>
+    <ellipse cy="12" rx="5" ry="8" fill="#ffd85b"/>
+    <circle cy="-8" r="5" fill="#171c31"/>
   </g>
-  <text x="78" y="47" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="2" fill="currentColor">TSUBAKI Tech</text>
+  <path d="M60 52C82 44 92 32 100 15" fill="none" stroke="#d69a12" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8" opacity=".65"/>
+  <text x="92" y="45" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="27" font-weight="820" letter-spacing="1.2" fill="currentColor">Hotaru Ascend</text>
 </svg>
