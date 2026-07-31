@@ -1,4 +1,4 @@
-import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -10,11 +10,12 @@ async function readJson(fileName) {
   return JSON.parse(await readFile(filePath, 'utf8'));
 }
 
-const [languages, site, skills, posts] = await Promise.all([
+const [languages, site, skills, posts, members] = await Promise.all([
   readJson('languages.json'),
   readJson('site.json'),
   readJson('skills.json'),
-  readJson('posts.json')
+  readJson('posts.json'),
+  readJson('members.json')
 ]);
 
 const languageCodes = Object.keys(languages);
@@ -53,11 +54,18 @@ function localizedPath(languageCode, suffix = '') {
 }
 
 function absoluteUrl(pathname) {
-  return new URL(pathname.replace(/^\//, ''), baseUrl).href;
+  const pathWithoutBase = basePath && pathname.startsWith(`${basePath}/`)
+    ? pathname.slice(basePath.length)
+    : pathname;
+  return new URL(pathWithoutBase.replace(/^\//, ''), baseUrl).href;
 }
 
 function articlePath(languageCode, slug) {
   return localizedPath(languageCode, `blog/${slug}/`);
+}
+
+function memberPath(languageCode, slug) {
+  return localizedPath(languageCode, `members/${slug}/`);
 }
 
 await rm(outputDirectory, { recursive: true, force: true });
@@ -66,25 +74,11 @@ await cp(path.join(projectRoot, 'public'), outputDirectory, { recursive: true })
 await cp(path.join(projectRoot, 'src', 'styles.css'), path.join(outputDirectory, 'assets', 'styles.css'));
 await cp(path.join(projectRoot, 'src', 'app.js'), path.join(outputDirectory, 'assets', 'app.js'));
 
-const ogImageParts = (await readdir(path.join(projectRoot, 'public')))
-  .filter((name) => name.startsWith('og-image.png.base64.'))
-  .sort();
-
-if (ogImageParts.length) {
-  const base64Data = (await Promise.all(
-    ogImageParts.map((name) => readFile(path.join(projectRoot, 'public', name), 'utf8'))
-  )).join('').replace(/\s+/g, '');
-
-  await writeFile(path.join(outputDirectory, 'og-image.png'), Buffer.from(base64Data, 'base64'));
-  await Promise.all(ogImageParts.map((name) => rm(path.join(outputDirectory, name), { force: true })));
-}
-
 function languageMenu(currentLanguage, equivalentSuffix = '') {
   const currentUi = languages[currentLanguage].ui;
   const links = languageCodes.map((languageCode) => {
-    const href = localizedPath(languageCode, equivalentSuffix);
     const current = languageCode === currentLanguage ? ' aria-current="page"' : '';
-    return `<a href="${href}" lang="${escapeHtml(languages[languageCode].htmlLang)}"${current}>${escapeHtml(languages[languageCode].label)}</a>`;
+    return `<a href="${localizedPath(languageCode, equivalentSuffix)}" lang="${escapeHtml(languages[languageCode].htmlLang)}"${current}>${escapeHtml(languages[languageCode].label)}</a>`;
   }).join('');
 
   return `<details class="language-menu"><summary aria-label="${escapeHtml(currentUi.language)}">${escapeHtml(languages[currentLanguage].shortLabel)}</summary><div class="language-panel">${links}</div></details>`;
@@ -97,12 +91,12 @@ function documentHead(languageCode, title, description, pathname, equivalentSuff
     `<link rel="alternate" hreflang="${escapeHtml(languages[code].htmlLang)}" href="${absoluteUrl(localizedPath(code, equivalentSuffix))}">`
   )).join('');
 
-  return `<!doctype html><html lang="${escapeHtml(language.htmlLang)}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(title)}</title><meta name="description" content="${escapeHtml(description)}"><link rel="canonical" href="${canonicalUrl}">${alternateLinks}<link rel="alternate" hreflang="x-default" href="${absoluteUrl(assetPath('/'))}"><link rel="icon" href="${assetPath('/favicon.svg')}" type="image/svg+xml"><link rel="stylesheet" href="${assetPath('/assets/styles.css')}"><meta property="og:type" content="website"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonicalUrl}"><meta property="og:image" content="${absoluteUrl(assetPath('/og-image.png'))}"><meta property="og:locale" content="${escapeHtml(language.ogLocale)}"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#171316"></head>`;
+  return `<!doctype html><html lang="${escapeHtml(language.htmlLang)}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(title)}</title><meta name="description" content="${escapeHtml(description)}"><link rel="canonical" href="${canonicalUrl}">${alternateLinks}<link rel="alternate" hreflang="x-default" href="${absoluteUrl(assetPath('/'))}"><link rel="icon" href="${assetPath('/favicon.svg')}" type="image/svg+xml"><link rel="stylesheet" href="${assetPath('/assets/styles.css')}"><meta property="og:type" content="website"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonicalUrl}"><meta property="og:image" content="${absoluteUrl(assetPath('/og-image.svg'))}"><meta property="og:locale" content="${escapeHtml(language.ogLocale)}"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0d1224"></head>`;
 }
 
 function siteHeader(languageCode, equivalentSuffix = '') {
   const ui = languages[languageCode].ui;
-  return `<a class="skip" href="#main">${escapeHtml(ui.skip)}</a><div class="scroll-progress" aria-hidden="true"><i></i></div><header class="header"><div class="wrap nav"><a class="brand" href="${localizedPath(languageCode)}"><img src="${assetPath('/logo.svg')}" alt="${escapeHtml(site.name)}"></a><button class="nav-toggle" type="button" aria-label="${escapeHtml(ui.menu)}" aria-expanded="false">☰</button><nav aria-label="${escapeHtml(ui.primaryNavigation)}"><a href="${localizedPath(languageCode)}#about">${escapeHtml(ui.about)}</a><a href="${localizedPath(languageCode)}#projects">${escapeHtml(ui.projects)}</a><a href="${localizedPath(languageCode)}#blog">${escapeHtml(ui.blog)}</a>${languageMenu(languageCode, equivalentSuffix)}<button class="theme" type="button" aria-label="${escapeHtml(ui.theme)}">◐</button></nav></div></header>`;
+  return `<a class="skip" href="#main">${escapeHtml(ui.skip)}</a><div class="scroll-progress" aria-hidden="true"><i></i></div><header class="header"><div class="wrap nav"><a class="brand" href="${localizedPath(languageCode)}"><img src="${assetPath('/logo.svg')}" alt="${escapeHtml(site.name)}"></a><button class="nav-toggle" type="button" aria-label="${escapeHtml(ui.menu)}" aria-expanded="false">☰</button><nav aria-label="${escapeHtml(ui.primaryNavigation)}"><a href="${localizedPath(languageCode)}#about">${escapeHtml(ui.about)}</a><a href="${localizedPath(languageCode)}#members">${escapeHtml(ui.members)}</a><a href="${localizedPath(languageCode)}#projects">${escapeHtml(ui.projects)}</a><a href="${localizedPath(languageCode)}#blog">${escapeHtml(ui.blog)}</a>${languageMenu(languageCode, equivalentSuffix)}<button class="theme" type="button" aria-label="${escapeHtml(ui.theme)}">◐</button></nav></div></header>`;
 }
 
 function siteFooter(languageCode) {
@@ -110,7 +104,22 @@ function siteFooter(languageCode) {
 }
 
 function statsMarkup(languageCode) {
-  return `<section class="stats-section"><div class="wrap stats-grid">${site.stats.map((stat) => `<div class="stat reveal"><strong>${escapeHtml(stat.value)}</strong><span>${escapeHtml(translate(stat.label, languageCode))}</span></div>`).join('')}</div></section>`;
+  const items = site.stats.map((stat) => `<div class="stat reveal"><strong>${escapeHtml(stat.value)}</strong><span>${escapeHtml(translate(stat.label, languageCode))}</span></div>`).join('');
+  return `<section class="stats-section"><div class="wrap stats-grid">${items}</div></section>`;
+}
+
+function memberCards(languageCode) {
+  const ui = languages[languageCode].ui;
+  if (!members.length) {
+    return `<div class="preparing reveal"><span>${escapeHtml(ui.preparing)}</span><p>${escapeHtml(ui.membersPreparing)}</p></div>`;
+  }
+
+  return `<div class="member-grid">${members.map((member) => `<article class="member-card reveal"><a class="member-icon-link" href="${memberPath(languageCode, member.slug)}"><img class="member-icon" src="${assetPath(member.icon)}" alt="${escapeHtml(translate(member.name, languageCode))}"></a><div class="member-card-body"><p class="member-role">${escapeHtml(translate(member.role, languageCode))}</p><h3>${escapeHtml(translate(member.name, languageCode))}</h3><p>${escapeHtml(translate(member.summary, languageCode))}</p><a class="text-link" href="${memberPath(languageCode, member.slug)}">${escapeHtml(ui.viewProfile)} →</a></div></article>`).join('')}</div>`;
+}
+
+function memberSection(languageCode) {
+  const ui = languages[languageCode].ui;
+  return `<section id="members" class="soft"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">MEMBERS</div><h2>${escapeHtml(ui.members)}</h2><p class="section-intro">${escapeHtml(ui.membersIntro)}</p></div></div>${memberCards(languageCode)}</div></section>`;
 }
 
 function projectSection(languageCode) {
@@ -134,9 +143,10 @@ function blogSection(languageCode) {
 
 function homePage(languageCode) {
   const ui = languages[languageCode].ui;
-  const content = `<section class="hero"><div class="wrap hero-single"><div class="hero-copy reveal"><div class="eyebrow">TSUBAKI TECH</div><h1>${escapeHtml(translate(site.tagline, languageCode))}</h1><p>${escapeHtml(translate(site.description, languageCode))}</p><div class="actions"><a class="button primary" href="#projects">${escapeHtml(ui.projects)}</a><a class="button" href="${escapeHtml(site.githubUrl)}" target="_blank" rel="noopener">GitHub ↗</a></div></div></div></section>
+  const content = `<section class="hero"><div class="wrap hero-single"><div class="hero-copy reveal"><div class="eyebrow">${escapeHtml(site.name.toUpperCase())}</div><h1>${escapeHtml(translate(site.tagline, languageCode))}</h1><p>${escapeHtml(translate(site.description, languageCode))}</p><div class="actions"><a class="button primary" href="#projects">${escapeHtml(ui.projects)}</a><a class="button" href="${escapeHtml(site.githubUrl)}" target="_blank" rel="noopener">GitHub ↗</a></div></div></div></section>
 <section id="about"><div class="wrap split reveal"><div><div class="eyebrow">ABOUT ${escapeHtml(site.name)}</div><h2>${escapeHtml(ui.about)}</h2></div><div><p class="lead">${escapeHtml(translate(site.about, languageCode))}</p><aside class="development-note"><span>${escapeHtml(ui.development)}</span><p>${escapeHtml(translate(site.developmentSince, languageCode))}</p></aside></div></div></section>
-<section class="soft"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">CAPABILITIES</div><h2>${escapeHtml(ui.capabilities)}</h2></div></div><div class="skill-grid">${skills.map((skill) => `<article class="skill reveal"><div class="skill-top"><span class="skill-icon">${escapeHtml(skill.icon)}</span><strong>${escapeHtml(skill.name)}</strong><span>${escapeHtml(skill.level)}%</span></div><p>${escapeHtml(translate(skill.description, languageCode))}</p><div class="meter"><i style="--level:${Number(skill.level) || 0}%"></i></div></article>`).join('')}</div></div></section>
+${memberSection(languageCode)}
+<section><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">CAPABILITIES</div><h2>${escapeHtml(ui.capabilities)}</h2></div></div><div class="skill-grid">${skills.map((skill) => `<article class="skill reveal"><div class="skill-top"><span class="skill-icon">${escapeHtml(skill.icon)}</span><strong>${escapeHtml(skill.name)}</strong><span>${escapeHtml(skill.level)}%</span></div><p>${escapeHtml(translate(skill.description, languageCode))}</p><div class="meter"><i style="--level:${Number(skill.level) || 0}%"></i></div></article>`).join('')}</div></div></section>
 ${statsMarkup(languageCode)}
 ${projectSection(languageCode)}
 ${blogSection(languageCode)}`;
@@ -144,8 +154,24 @@ ${blogSection(languageCode)}`;
   const title = `${site.name} — ${translate(site.tagline, languageCode)}`;
   const description = translate(site.description, languageCode);
   const pathname = localizedPath(languageCode);
-
   return `${documentHead(languageCode, title, description, pathname)}<body data-lang="${escapeHtml(languageCode)}">${siteHeader(languageCode)}<main id="main">${content}</main>${siteFooter(languageCode)}<script type="module" src="${assetPath('/assets/app.js')}"></script></body></html>`;
+}
+
+function memberPage(languageCode, member) {
+  const ui = languages[languageCode].ui;
+  const name = translate(member.name, languageCode);
+  const role = translate(member.role, languageCode);
+  const summary = translate(member.summary, languageCode);
+  const suffix = `members/${member.slug}/`;
+  const pathname = memberPath(languageCode, member.slug);
+  const skillList = member.skills.length
+    ? `<div class="profile-specialties"><h2>${escapeHtml(ui.specialties)}</h2><div class="profile-tags">${member.skills.map((skill) => `<span>${escapeHtml(skill)}</span>`).join('')}</div></div>`
+    : '';
+  const githubLink = member.github
+    ? `<a class="button" href="${escapeHtml(member.github)}" target="_blank" rel="noopener">${escapeHtml(ui.memberGithub)} ↗</a>`
+    : '';
+  const content = `<article class="member-profile"><div class="wrap profile-layout"><div class="profile-visual reveal"><img src="${assetPath(member.icon)}" alt="${escapeHtml(name)}"></div><div class="profile-copy reveal"><a class="text-link" href="${localizedPath(languageCode)}#members">← ${escapeHtml(ui.memberBack)}</a><p class="member-role">${escapeHtml(role)}</p><h1>${escapeHtml(name)}</h1><p class="profile-lead">${escapeHtml(summary)}</p><p class="profile-bio">${escapeHtml(translate(member.bio, languageCode))}</p>${skillList}<div class="actions">${githubLink}</div></div></div></article>`;
+  return `${documentHead(languageCode, `${name} — ${site.name}`, summary, pathname, suffix)}<body data-lang="${escapeHtml(languageCode)}">${siteHeader(languageCode, suffix)}<main id="main">${content}</main>${siteFooter(languageCode)}<script type="module" src="${assetPath('/assets/app.js')}"></script></body></html>`;
 }
 
 function markdownToHtml(markdown = '') {
@@ -162,19 +188,15 @@ function markdownToHtml(markdown = '') {
   for (const line of lines) {
     if (!line.trim()) {
       flushParagraph();
-      continue;
-    }
-    if (line.startsWith('## ')) {
+    } else if (line.startsWith('## ')) {
       flushParagraph();
       output.push(`<h2>${escapeHtml(line.slice(3))}</h2>`);
-      continue;
-    }
-    if (line.startsWith('# ')) {
+    } else if (line.startsWith('# ')) {
       flushParagraph();
       output.push(`<h2>${escapeHtml(line.slice(2))}</h2>`);
-      continue;
+    } else {
+      paragraph.push(line.trim());
     }
-    paragraph.push(line.trim());
   }
 
   flushParagraph();
@@ -187,9 +209,7 @@ function articlePage(languageCode, post) {
   const description = translate(post.excerpt, languageCode);
   const suffix = `blog/${post.slug}/`;
   const pathname = articlePath(languageCode, post.slug);
-
   const content = `<article class="article"><div class="narrow"><a class="text-link" href="${localizedPath(languageCode)}#blog">← ${escapeHtml(ui.blog)}</a><time datetime="${escapeHtml(post.date)}">${escapeHtml(post.date)}</time><h1>${escapeHtml(translate(post.title, languageCode))}</h1><p class="article-lead">${escapeHtml(description)}</p><div class="article-body">${markdownToHtml(translate(post.content, languageCode))}</div></div></article>`;
-
   return `${documentHead(languageCode, title, description, pathname, suffix)}<body data-lang="${escapeHtml(languageCode)}">${siteHeader(languageCode, suffix)}<main id="main">${content}</main>${siteFooter(languageCode)}<script type="module" src="${assetPath('/assets/app.js')}"></script></body></html>`;
 }
 
@@ -210,6 +230,10 @@ for (const languageCode of languageCodes) {
   await writePage(path.join(rootPath, 'index.html'), homePage(languageCode));
   await writePage(path.join(rootPath, '404.html'), notFoundPage(languageCode));
 
+  for (const member of members) {
+    await writePage(path.join(rootPath, 'members', member.slug, 'index.html'), memberPage(languageCode, member));
+  }
+
   for (const post of posts) {
     await writePage(path.join(rootPath, 'blog', post.slug, 'index.html'), articlePage(languageCode, post));
   }
@@ -220,6 +244,9 @@ await writeFile(path.join(outputDirectory, '404.html'), notFoundPage('ja'));
 const sitemapEntries = [];
 for (const languageCode of languageCodes) {
   sitemapEntries.push(`<url><loc>${absoluteUrl(localizedPath(languageCode))}</loc></url>`);
+  for (const member of members) {
+    sitemapEntries.push(`<url><loc>${absoluteUrl(memberPath(languageCode, member.slug))}</loc></url>`);
+  }
   for (const post of posts) {
     sitemapEntries.push(`<url><loc>${absoluteUrl(articlePath(languageCode, post.slug))}</loc></url>`);
   }
@@ -229,4 +256,4 @@ await writeFile(path.join(outputDirectory, 'sitemap.xml'), `<?xml version="1.0" 
 await writeFile(path.join(outputDirectory, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${absoluteUrl(assetPath('/sitemap.xml'))}\n`);
 await writeFile(path.join(outputDirectory, '.nojekyll'), '');
 
-console.log(`Built ${languageCodes.length} home pages, ${posts.length * languageCodes.length} article pages, and ${languageCodes.length} localized 404 pages.`);
+console.log(`Built ${languageCodes.length} home pages, ${members.length * languageCodes.length} member pages, ${posts.length * languageCodes.length} article pages, and ${languageCodes.length} localized 404 pages.`);
