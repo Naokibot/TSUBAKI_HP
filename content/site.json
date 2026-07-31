@@ -11,14 +11,14 @@
     "de": "Wir verändern Lernen, indem wir gestalten."
   },
   "description": {
-    "ja": "Hotaru Ascendは、教育・集中・プログラミングの「分かりにくい」を、触って理解できるプロダクトへ変える学生開発チームです。",
-    "en": "Hotaru Ascend is a student development team that turns hard-to-understand ideas in education, focus, and programming into interactive products.",
-    "ru": "Hotaru Ascend — студенческая команда разработчиков, которая превращает сложные идеи из образования, концентрации и программирования в интерактивные продукты.",
-    "zh-TW": "Hotaru Ascend 是一支由學生主導的開發團隊，將教育、專注力與程式設計中不易理解的概念，轉化為能親手操作、直覺理解的產品。",
-    "ko": "Hotaru Ascend는 교육, 집중, 프로그래밍에서 이해하기 어려운 개념을 직접 조작하며 배울 수 있는 제품으로 바꾸는 학생 개발 팀입니다.",
-    "hi": "Hotaru Ascend छात्रों की एक विकास टीम है, जो शिक्षा, एकाग्रता और प्रोग्रामिंग की कठिन अवधारणाओं को ऐसे इंटरैक्टिव उत्पादों में बदलती है जिन्हें प्रयोग करके समझा जा सके।",
-    "fr": "Hotaru Ascend est une équipe de développement étudiante qui transforme les notions difficiles à comprendre dans l’éducation, la concentration et la programmation en produits interactifs.",
-    "de": "Hotaru Ascend ist ein studentisches Entwicklungsteam, das schwer verständliche Themen aus Bildung, Konzentration und Programmierung in interaktive Produkte verwandelt."
+    "ja": "私達Hotaru Ascendは様々な技術を用い、まだ見ぬ世界を目指します。",
+    "en": "We are Hotaru Ascend. Using a wide range of technologies, we aim for worlds yet unseen.",
+    "ru": "Мы — Hotaru Ascend. Используя самые разные технологии, мы стремимся к ещё неизведанным мирам.",
+    "zh-TW": "我們 Hotaru Ascend 運用多元技術，朝向尚未見過的世界前進。",
+    "ko": "저희 Hotaru Ascend는 다양한 기술을 활용해 아직 보지 못한 세계를 향해 나아갑니다.",
+    "hi": "हम Hotaru Ascend विभिन्न तकनीकों का उपयोग करके अब तक अनदेखी दुनिया की ओर बढ़ते हैं।",
+    "fr": "Chez Hotaru Ascend, nous mobilisons des technologies variées pour explorer des mondes encore inconnus.",
+    "de": "Wir von Hotaru Ascend nutzen vielfältige Technologien, um in noch unbekannte Welten vorzustoßen."
   },
   "about": {
     "ja": "私たちは、日常で感じた小さな不便や学習のつまずきを出発点に、調査、設計、実装、利用者テストまで自分たちで行います。見た目だけではなく、仕組みを説明できるプロダクトを目指しています。",
@@ -41,14 +41,14 @@
     "de": "Seit 2025 entwickeln wir einen Programmiereditor für die nächste Generation von Lernerfahrungen."
   },
   "footerTagline": {
-    "ja": "つくることで、学びを変える。次世代の機能を作っていく。",
-    "en": "Changing how we learn by building. Creating the features of the next generation.",
-    "ru": "Меняем обучение, создавая. Разрабатываем функции следующего поколения.",
-    "zh-TW": "用創造，改變學習。持續打造下一代功能。",
-    "ko": "만들면서 배움을 바꿉니다. 차세대 기능을 만들어 갑니다.",
-    "hi": "बनाते हुए सीखने का तरीका बदलते हैं। अगली पीढ़ी की सुविधाएँ बनाते हैं।",
-    "fr": "Créer pour transformer l’apprentissage. Concevoir les fonctionnalités de demain.",
-    "de": "Wir verändern Lernen, indem wir gestalten. Wir entwickeln die Funktionen der nächsten Generation."
+    "ja": "まだ見ぬ世界へ、創ろう。",
+    "en": "Let’s build the world we have yet to see.",
+    "ru": "Создадим мир, которого мы ещё не видели.",
+    "zh-TW": "一起創造尚未見過的世界。",
+    "ko": "아직 보지 못한 세계를, 함께 만들어 갑시다.",
+    "hi": "आइए, उस दुनिया को बनाएँ जिसे हमने अभी तक नहीं देखा।",
+    "fr": "Créons le monde que nous n’avons pas encore vu.",
+    "de": "Gestalten wir die Welt, die wir noch nicht gesehen haben."
   },
   "stats": [
     {
