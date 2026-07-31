@@ -12,6 +12,69 @@
     "ja": "私たちは、日常で感じた小さな不便や学習のつまずきを出発点に、調査、設計、実装、利用者テストまで自分たちで行います。見た目だけではなく、仕組みを説明できるプロダクトを目指しています。",
     "en": "We start with small frustrations and learning obstacles from everyday life, then handle research, design, implementation, and user testing ourselves. We aim to build products whose mechanisms can be clearly explained, not just attractive interfaces."
   },
+  "announcement": {
+    "date": "2026.07",
+    "title": {
+      "ja": "U-22プログラミング・コンテストに向けて、新しい学習体験を開発中",
+      "en": "Building a new learning experience for the U-22 Programming Contest"
+    },
+    "link": "#projects"
+  },
+  "mission": {
+    "title": {
+      "ja": "学びのつまずきを、動く体験に変える。",
+      "en": "Turn learning obstacles into experiences that move."
+    },
+    "body": {
+      "ja": "コードの内部、集中が途切れる瞬間、立体図形の見えにくさ。説明だけでは届きにくい課題を、操作できる世界として設計し直します。",
+      "en": "The inside of code, the moment focus breaks, the difficulty of seeing solid geometry. We redesign hard-to-explain challenges as worlds people can interact with."
+    }
+  },
+  "focusAreas": [
+    {
+      "number": "01",
+      "title": {"ja": "BUILD", "en": "BUILD"},
+      "subtitle": {"ja": "プロダクトをつくる", "en": "Create products"},
+      "body": {
+        "ja": "日常の小さな違和感を、動くプロトタイプまで持っていきます。",
+        "en": "We take small frustrations from daily life all the way to working prototypes."
+      }
+    },
+    {
+      "number": "02",
+      "title": {"ja": "VISUALIZE", "en": "VISUALIZE"},
+      "subtitle": {"ja": "見えない仕組みを見える化する", "en": "Make invisible systems visible"},
+      "body": {
+        "ja": "複雑な処理や考え方を、図・動き・インタラクションへ変換します。",
+        "en": "We translate complex processes and ideas into visuals, movement, and interaction."
+      }
+    },
+    {
+      "number": "03",
+      "title": {"ja": "TEST", "en": "TEST"},
+      "subtitle": {"ja": "使う人と一緒に確かめる", "en": "Validate with real users"},
+      "body": {
+        "ja": "完成してから見せるのではなく、制作途中から試し、迷いを改善へ変えます。",
+        "en": "We test during development, turning moments of hesitation into improvements."
+      }
+    }
+  ],
+  "stats": [
+    {"value": "3", "label": {"ja": "主要プロジェクト", "en": "Featured projects"}},
+    {"value": "15", "label": {"ja": "自動生成ページ", "en": "Generated pages"}},
+    {"value": "2", "label": {"ja": "対応言語", "en": "Languages"}},
+    {"value": "100%", "label": {"ja": "学生主体", "en": "Student-led"}}
+  ],
+  "cta": {
+    "title": {
+      "ja": "一緒に、まだない学び方をつくりませんか。",
+      "en": "Let’s build a way of learning that does not exist yet."
+    },
+    "body": {
+      "ja": "共同開発、実証実験、取材、イベント登壇などのご相談をお待ちしています。",
+      "en": "We welcome collaboration, user testing, interviews, and event opportunities."
+    }
+  },
   "baseUrl": "https://naokibot.github.io/TSUBAKI_HP/",
   "email": "tsubaki.tech.jp@gmail.com",
   "githubUser": "Naokibot",
