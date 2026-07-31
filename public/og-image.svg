@@ -1,17 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
-  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#11131a"/><stop offset=".6" stop-color="#1d2230"/><stop offset="1" stop-color="#391427"/></linearGradient><linearGradient id="p" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff637d"/><stop offset="1" stop-color="#aa123f"/></linearGradient></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Hotaru Ascend</title>
+  <desc id="desc">Hotaru Ascend portfolio Open Graph image with a rising firefly.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#080b15"/><stop offset=".58" stop-color="#111a37"/><stop offset="1" stop-color="#253260"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#fffbd0"/><stop offset=".3" stop-color="#ffe16f" stop-opacity=".9"/><stop offset="1" stop-color="#ffd95a" stop-opacity="0"/></radialGradient>
+    <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e3ecff"/><stop offset="1" stop-color="#8199df" stop-opacity=".22"/></linearGradient>
+  </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <circle cx="1020" cy="90" r="240" fill="#ff5977" opacity=".07"/>
-  <circle cx="1040" cy="540" r="320" fill="#6c7dff" opacity=".06"/>
-  <g transform="translate(210 315)">
-    <path d="M0-150C76-150 122-101 122-42C122 7 80 48 0 90C-80 48-122 7-122-42C-122-101-76-150 0-150Z" fill="url(#p)"/>
-    <path d="M0-150C76-150 122-101 122-42C122 7 80 48 0 90C-80 48-122 7-122-42C-122-101-76-150 0-150Z" fill="url(#p)" opacity=".82" transform="rotate(72)"/>
-    <path d="M0-150C76-150 122-101 122-42C122 7 80 48 0 90C-80 48-122 7-122-42C-122-101-76-150 0-150Z" fill="url(#p)" opacity=".66" transform="rotate(144)"/>
-    <path d="M0-150C76-150 122-101 122-42C122 7 80 48 0 90C-80 48-122 7-122-42C-122-101-76-150 0-150Z" fill="url(#p)" opacity=".52" transform="rotate(216)"/>
-    <path d="M0-150C76-150 122-101 122-42C122 7 80 48 0 90C-80 48-122 7-122-42C-122-101-76-150 0-150Z" fill="url(#p)" opacity=".42" transform="rotate(288)"/>
-    <circle r="44" fill="#ffd56a"/>
+  <circle cx="930" cy="170" r="260" fill="url(#glow)" opacity=".68"/>
+  <path d="M730 520C820 455 848 370 887 240" fill="none" stroke="#f5c545" stroke-width="7" stroke-linecap="round" stroke-dasharray="3 22" opacity=".62"/>
+  <g transform="translate(930 185) rotate(-22)">
+    <ellipse cx="-58" cy="-22" rx="82" ry="34" fill="url(#wing)" transform="rotate(-24)"/>
+    <ellipse cx="58" cy="-22" rx="82" ry="34" fill="url(#wing)" transform="rotate(24)"/>
+    <ellipse cy="18" rx="25" ry="62" fill="#10162b"/>
+    <ellipse cy="55" rx="20" ry="32" fill="#ffe16b"/>
+    <circle cy="-42" r="23" fill="#10162b"/>
   </g>
-  <text x="410" y="282" font-family="Inter, system-ui, sans-serif" font-size="76" font-weight="850" letter-spacing="6" fill="#fff">TSUBAKI Tech</text>
-  <text x="416" y="362" font-family="Inter, system-ui, sans-serif" font-size="38" font-weight="550" fill="#f0f2f8">Changing how we learn by building.</text>
-  <text x="418" y="430" font-family="Inter, system-ui, sans-serif" font-size="25" fill="#aeb7cb">Education · Visualization · Creative Coding</text>
+  <text x="92" y="272" font-family="Inter, system-ui, sans-serif" font-size="82" font-weight="850" letter-spacing="2" fill="#ffffff">Hotaru Ascend</text>
+  <text x="98" y="354" font-family="Inter, system-ui, sans-serif" font-size="38" font-weight="550" fill="#e7ebf7">Changing how we learn by building.</text>
+  <text x="100" y="425" font-family="Inter, system-ui, sans-serif" font-size="25" fill="#aeb9d2">Learning · Programming · Product Design</text>
 </svg>
