@@ -1,8 +1,21 @@
-# TSUBAKI Tech 管理者ログイン設定
+# TSUBAKI Tech 管理者メール認証設定
 
-## 仕組み
+## 認証方式
 
-サイト最下部の「管理者用ログイン」から `/admin/` を開きます。認証後、次のデータをブラウザで編集できます。
+管理画面はパスワードを使用しません。登録済みメールアドレスを入力すると、6桁のワンタイム認証コードがメールで届きます。コードを正しく入力した場合だけ管理画面へ入れます。
+
+許可される管理者は次の2件だけです。
+
+```text
+tomatonabe0120@gmail.com
+tsubaki.tech.jp@gmail.com
+```
+
+この2件は `functions/_shared/admin.js` 内の固定許可リストで判定します。`ADMIN_EMAILS`などの環境変数を変更しても、第三者を管理者へ追加できません。
+
+## 管理画面で編集できる内容
+
+サイト最下部の「管理者用ログイン」から `/admin/` を開きます。認証後、次のデータを編集できます。
 
 - サイト基本情報
 - 作品一覧・作品詳細
@@ -10,38 +23,50 @@
 - スキル一覧
 - 資格・コンテスト実績
 
-保存内容はサーバー内に直接置かず、GitHubの `Naokibot/TSUBAKI_HP` へコミットします。Cloudflare PagesまたはGitHub Pagesの自動デプロイが完了すると本番サイトへ反映されます。
+保存内容はGitHubの `Naokibot/TSUBAKI_HP` へコミットされ、Cloudflare PagesまたはGitHub Pagesの自動デプロイ後に公開サイトへ反映されます。
 
-## 管理者
+## Cloudflare Pagesで必須の設定
 
-初期管理者メールアドレスは次です。
+Cloudflare Dashboardの対象Pagesプロジェクトで、Settings → Variables and Secretsを開き、ProductionとPreviewへ設定します。
 
-```text
-tsubaki.tech.jp@gmail.com
-```
-
-複数の管理者を指定するときは、Cloudflare Pagesの `ADMIN_EMAILS` にカンマ区切りで設定します。
+### Secret
 
 ```text
-tsubaki.tech.jp@gmail.com,second-admin@example.com
-```
-
-## 必須の秘密変数
-
-Cloudflare Dashboardの対象Pagesプロジェクトで、Settings → Variables and Secretsを開き、ProductionとPreviewの両方へ次を登録します。
-
-```text
-ADMIN_EMAILS=tsubaki.tech.jp@gmail.com
-ADMIN_PASSWORD=十分に長い管理者パスワード
 SESSION_SECRET=ランダムな長い文字列
 GITHUB_TOKEN=GitHubのFine-grained personal access token
-GITHUB_REPOSITORY=Naokibot/TSUBAKI_HP
-GITHUB_BRANCH=main
+RESEND_API_KEY=ResendのAPIキー
+ADMIN_FROM_EMAIL=Resendで認証済みの送信元メール
 ```
 
-`ADMIN_PASSWORD`、`SESSION_SECRET`、`GITHUB_TOKEN`は必ずSecretとして登録してください。ソースコードやJSONへ書かないでください。
+`ADMIN_FROM_EMAIL`を設定しない場合は`CONTACT_FROM_EMAIL`を使用します。
 
-### SESSION_SECRETの作成例
+### 通常の環境変数
+
+```text
+GITHUB_REPOSITORY=Naokibot/TSUBAKI_HP
+GITHUB_BRANCH=main
+CONTACT_TO_EMAIL=tsubaki.tech.jp@gmail.com
+```
+
+`ADMIN_PASSWORD`と`ADMIN_EMAILS`は不要です。残っている場合は削除してください。
+
+## ADMIN_AUTH_KVの作成
+
+認証コードを10分間だけ保存し、使用済みコードを無効化し、送信回数を制限するためCloudflare KVが必須です。
+
+1. Cloudflare DashboardでStorage & Databases → KVを開く
+2. `TSUBAKI_ADMIN_AUTH`などの名前でNamespaceを作る
+3. PagesプロジェクトのSettings → Bindingsを開く
+4. KV namespace bindingを追加する
+5. Variable nameを次にする
+
+```text
+ADMIN_AUTH_KV
+```
+
+認証コードは10分で自動削除されます。Cloudflare KVの`expirationTtl`を使用しています。
+
+## SESSION_SECRETの作成例
 
 PowerShell:
 
@@ -49,7 +74,24 @@ PowerShell:
 -join ((48..57)+(65..90)+(97..122) | Get-Random -Count 64 | ForEach-Object {[char]$_})
 ```
 
-表示された文字列を `SESSION_SECRET` に設定します。
+表示された文字列を`SESSION_SECRET`へSecretとして登録します。
+
+## Resendの設定
+
+認証コードの送信にはResendを使用します。
+
+```text
+RESEND_API_KEY
+ADMIN_FROM_EMAIL
+```
+
+`ADMIN_FROM_EMAIL`はResendで認証したドメインのアドレスにしてください。例:
+
+```text
+TSUBAKI Tech <login@example.com>
+```
+
+問い合わせフォームと同じ送信元を使う場合は、`CONTACT_FROM_EMAIL`だけでも動作します。
 
 ## GitHubトークンの権限
 
@@ -58,58 +100,53 @@ GitHubでFine-grained personal access tokenを作成します。
 1. GitHub Settingsを開く
 2. Developer settingsを開く
 3. Personal access tokens → Fine-grained tokensを開く
-4. Repository accessで `TSUBAKI_HP` のみ選択する
-5. Repository permissionsで `Contents: Read and write` を許可する
-6. 発行されたトークンをCloudflareの `GITHUB_TOKEN` Secretへ登録する
+4. Repository accessで`TSUBAKI_HP`だけを選択する
+5. Repository permissionsで`Contents: Read and write`を許可する
+6. 発行されたトークンをCloudflareの`GITHUB_TOKEN` Secretへ登録する
 
-トークンは管理画面やブラウザへ送信されません。Cloudflare Pages FunctionからGitHub APIを呼ぶときだけ使用します。
+トークンはブラウザへ送信されず、Cloudflare Pages FunctionからGitHub APIを呼ぶときだけ使用されます。
 
-## 任意のログイン試行制限
+## ローカル確認
 
-Cloudflare KVを作成し、binding名を次にすると、同一IPから15分間に5回を超えるログイン試行を拒否します。
+通常の`npm run dev`では画面デザインを確認できますが、Pages Functionsが動かないためメール認証はできません。
 
-```text
-ADMIN_RATE_LIMIT
-```
-
-問い合わせフォーム用KVとは分けても、同じNamespaceを異なるbinding名で接続しても構いません。
-
-## ローカルで管理画面を確認する
-
-通常の `npm run dev` では画面デザインは確認できますが、Pages Functionsは動かないためログインできません。
-
-Cloudflare Pages Functionsも含めて確認する場合:
+Cloudflare Pages Functionsを含めて確認する場合:
 
 ```bat
 cd /d "プロジェクトのフォルダ"
 npm run dev:pages
 ```
 
-初回はWranglerのダウンロード確認が表示される場合があります。秘密変数をローカルで使う場合は、プロジェクト直下に `.dev.vars` を作成します。
+プロジェクト直下に`.dev.vars`を作成します。
 
 ```text
-ADMIN_EMAILS=tsubaki.tech.jp@gmail.com
-ADMIN_PASSWORD=ローカル確認用パスワード
 SESSION_SECRET=ローカル確認用の長いランダム文字列
 GITHUB_TOKEN=GitHubトークン
 GITHUB_REPOSITORY=Naokibot/TSUBAKI_HP
 GITHUB_BRANCH=main
+RESEND_API_KEY=ResendのAPIキー
+ADMIN_FROM_EMAIL=認証済み送信元メール
 ```
 
-`.dev.vars`は `.gitignore` の対象にし、GitHubへ送信しないでください。
+WranglerのローカルKV bindingも`ADMIN_AUTH_KV`という名前で設定してください。`.dev.vars`はGitHubへ送信しないでください。
 
 ## セキュリティ仕様
 
-- 管理者メールアドレスを許可リストで制限
-- パスワードとトークンをCloudflare Secretsで管理
+- 管理者メールを2件に固定
+- パスワード認証を完全に廃止
+- 6桁ワンタイムコード
+- 認証コードは10分で失効
+- 認証コードを5回間違えると無効化
+- IP単位・メール単位の送信回数制限
+- 認証コードは平文ではなくHMAC値としてKVへ保存
+- 成功後に認証コードを削除
 - HttpOnly、SameSite=Strictの署名付きセッションCookie
-- 8時間でセッション失効
+- セッションは8時間で失効
 - CSRFトークン検証
 - GitHubの更新前SHAを使った競合検知
-- 編集可能ファイルを5種類のJSONに限定
+- 編集可能ファイルを5種類のJSONへ限定
 - JSON形式をサーバー側でも検証
-- 任意のIP単位ログイン回数制限
 
-## GitHub Pagesのみで公開する場合
+## GitHub Pagesだけで公開する場合
 
-GitHub Pagesはサーバー処理を実行できないため、管理者ログイン機能と問い合わせAPIは動きません。管理画面を使用する場合はCloudflare Pagesでサイトを公開してください。
+GitHub Pagesはサーバー処理を実行できないため、メール認証、管理画面保存、問い合わせAPIは動きません。管理者機能を使う場合はCloudflare Pagesで公開してください。
