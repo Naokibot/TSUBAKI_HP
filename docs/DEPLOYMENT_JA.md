@@ -1,56 +1,37 @@
-# TSUBAKI Tech Portfolio ローカル確認・公開手順
+# TSUBAKI Tech GitHub Pages公開手順
 
-## 1. ローカルで確認する
+## 1. 公開方式
 
-### 必要なもの
+このサイトはGitHub Actionsで静的HTMLを生成し、GitHub Pagesへ公開します。
 
-- Node.js 20以上
-- Git（GitHubから取得する場合）
+公開URL:
 
-### GitHubから取得する
-
-```bash
-git clone https://github.com/Naokibot/TSUBAKI_HP.git
-cd TSUBAKI_HP
+```text
+https://naokibot.github.io/TSUBAKI_HP/
 ```
 
-ZIPで取得した場合は、ZIPを展開してフォルダ内でターミナルを開いてください。
+GitHub Pagesではサーバー側のJavaScriptやデータベースを実行できないため、管理者ログイン、メール認証、Cloudflare Functionsは使用しません。問い合わせはFormspreeへ直接送信します。
 
-### 開発サーバーを起動する
+## 2. ローカル確認
 
-このプロジェクトには外部パッケージ依存がないため、`npm install`は不要です。
+### ZIPを使う場合
 
-```bash
+1. ZIPを右クリックして「すべて展開」する
+2. 展開したフォルダを開く
+3. `START_WINDOWS.bat`をダブルクリックする
+4. `http://localhost:4173`を開く
+
+### コマンドを使う場合
+
+```bat
+cd /d "プロジェクトフォルダの実際のパス"
+npm run check
 npm run dev
 ```
 
-ブラウザで次を開きます。
+終了は `Ctrl + C` です。
 
-```text
-http://localhost:4173
-```
-
-停止するときはターミナルで `Ctrl + C` を押します。
-
-### 公開用ファイルを確認する
-
-```bash
-npm run check
-npm run test:admin-auth
-npm run build
-npm run serve
-```
-
-`dist/`に生成された公開用サイトを `http://localhost:4173` で確認できます。
-
-### GitHub Pagesと同じパスで確認する
-
-macOS / Linux / Git Bash:
-
-```bash
-SITE_BASE_URL=https://naokibot.github.io/TSUBAKI_HP/ SITE_BASE_PATH=/TSUBAKI_HP npm run build
-npm run serve -- --base-path=/TSUBAKI_HP
-```
+### GitHub Pagesと同じURL構成で確認
 
 Windows PowerShell:
 
@@ -61,122 +42,128 @@ npm run build
 npm run serve -- --base-path=/TSUBAKI_HP
 ```
 
-ブラウザでは `http://localhost:4173/TSUBAKI_HP/` を開きます。
+ブラウザで次を開きます。
 
-## 2. 公開前に変更する
+```text
+http://localhost:4173/TSUBAKI_HP/
+```
 
-`content/site.json`の以下を実際の情報へ変更します。
+## 3. Formspreeを準備
 
-- `email`
-- `xUrl`
-- `instagramUrl`
-- `githubUser`
-- `githubUrl`
-- アクセス解析ID
-- お問い合わせ送信先
+1. Formspreeへ登録する
+2. 登録メールアドレスを確認する
+3. Dashboardで `New Form` を作成する
+4. 通知先を `tsubaki.tech.jp@gmail.com` にする
+5. Integration画面のエンドポイントをコピーする
 
-公開してよいメールアドレスだけを設定してください。秘密鍵やAPIキーはJSONへ書かないでください。
+例:
 
-## 3. GitHub Pagesで公開する
+```text
+https://formspree.io/f/abcdwxyz
+```
 
-GitHub Pagesは、作品紹介サイトを無料で公開する方法として簡単です。HTTPSも自動で有効になります。
+`content/site.json`を開き、次を実際の値へ変更します。
 
-1. GitHubで `TSUBAKI_HP` を開く
-2. `Settings` を開く
-3. 左メニューの `Pages` を開く
-4. `Build and deployment` のSourceを `GitHub Actions` にする
-5. `main`へpushする
-6. `Actions`の `Deploy portfolio to GitHub Pages` が成功するのを確認する
-7. `https://naokibot.github.io/TSUBAKI_HP/` を開く
+```json
+"contactEndpoint": "https://formspree.io/f/abcdwxyz"
+```
 
-`.github/workflows/deploy-pages.yml`が、`main`更新時に自動で構文確認、認証テスト、ビルド、公開を行います。
+`YOUR_FORM_ID`のままではフォームは送信されません。その場合も表示メールアドレスから直接連絡できます。
 
-### GitHub Pagesの注意点
+## 4. GitHub Pagesを有効化
 
-GitHub Pagesではサーバー処理を実行できないため、同梱の `/api/contact` と管理者メール認証は動作しません。お問い合わせフォームを使う場合は外部フォームURLを `contactEndpoint` に設定してください。管理者機能を使う場合はCloudflare Pagesで公開してください。
+1. GitHubで `Naokibot/TSUBAKI_HP` を開く
+2. `Settings`を開く
+3. 左メニューの`Pages`を開く
+4. `Build and deployment`のSourceを`GitHub Actions`にする
+5. `Actions`を開く
+6. `Deploy portfolio to GitHub Pages`を選択する
+7. `Run workflow`を押す
+8. 緑色のチェックが付くことを確認する
 
-## 4. 推奨の本番公開: Cloudflare Pages
+公開後は次を開きます。
 
-お問い合わせフォーム、メール認証管理画面、Turnstile、独自ドメインまで使用するならCloudflare Pagesを推奨します。
+```text
+https://naokibot.github.io/TSUBAKI_HP/
+```
 
-1. Cloudflare Dashboardで `Workers & Pages` を開く
-2. `Create` → `Pages` → `Connect to Git`
-3. GitHubの `Naokibot/TSUBAKI_HP` を選ぶ
-4. Build commandに `npm run build` を設定する
-5. Build output directoryに `dist` を設定する
-6. Root directoryは空欄にする
-7. デプロイする
+## 5. 更新を公開
 
-Cloudflare Pagesでは `functions/api/contact.js` と `functions/api/admin/` がPages Functionsとして認識されます。
-
-### 問い合わせフォーム用環境変数
-
-Cloudflare PagesのSettings → Variables and Secretsで設定します。
-
-- `RESEND_API_KEY`
-- `CONTACT_TO_EMAIL`
-- `CONTACT_FROM_EMAIL`
-- `TURNSTILE_SECRET`（推奨）
-
-Turnstileの公開Site Keyは `content/site.json` の `turnstileSiteKey` に設定します。
-
-### 独自ドメイン
-
-Cloudflare PagesのCustom domainsからドメインを追加します。設定後、`content/site.json`の`baseUrl`を実際のHTTPS URLへ変更してください。CloudflareがSSL証明書を自動管理します。
-
-## 5. 更新を公開する
-
-コンテンツを編集したら次を実行します。
+GitHub上でJSONを編集してCommitするか、ローカルで次を実行します。
 
 ```bash
 npm run check
-npm run test:admin-auth
 npm run build
 git add .
-git commit -m "update portfolio content"
+git commit -m "update portfolio"
 git push origin main
 ```
 
-GitHub PagesまたはCloudflare Pagesが自動的に再公開します。
+`main`の更新を検知してGitHub Actionsが自動公開します。
 
-## 6. 管理者ログインとブラウザ編集
+## 6. 公開後の確認
 
-サイト最下部に「管理者用ログイン」ボタンがあります。管理者は次の2件だけに固定されています。
+- トップページが表示される
+- ロゴがTSUBAKI Techになっている
+- 日本語・英語切替が動く
+- 作品詳細と記事詳細を開ける
+- ダークモードが動く
+- 問い合わせフォームから送信できる
+- `tsubaki.tech.jp@gmail.com`へ通知が届く
 
-```text
-tomatonabe0120@gmail.com
-tsubaki.tech.jp@gmail.com
-```
+## 7. よくあるエラー
 
-ログインはパスワードを使わず、メールへ届く6桁のワンタイムコードだけで行います。Cloudflare PagesのVariables and Secretsへ次を設定してください。
+### Pagesが404
 
-```text
-SESSION_SECRET=ランダムな長い文字列
-RESEND_API_KEY=Resend APIキー
-ADMIN_FROM_EMAIL=Resendで認証済みの送信元メール
-GITHUB_TOKEN=TSUBAKI_HPだけを書き換えられるGitHubトークン
-GITHUB_REPOSITORY=Naokibot/TSUBAKI_HP
-GITHUB_BRANCH=main
-```
-
-さらにCloudflare KVを作成し、Pagesプロジェクトへ次のbinding名で接続します。
+- Settings → PagesのSourceが`GitHub Actions`か確認
+- Actionsのデプロイが成功しているか確認
+- URLの末尾まで正しく入力する
 
 ```text
-ADMIN_AUTH_KV
+https://naokibot.github.io/TSUBAKI_HP/
 ```
 
-`ADMIN_PASSWORD`と`ADMIN_EMAILS`は使用しません。詳しい設定とセキュリティ仕様は`docs/ADMIN_SETUP_JA.md`を参照してください。
+### CSSや画像が表示されない
 
-## 7. 問い合わせメール送信先
-
-問い合わせの送信先は次です。
+`.github/workflows/deploy-pages.yml`の次の値を確認します。
 
 ```text
-tsubaki.tech.jp@gmail.com
+SITE_BASE_URL=https://naokibot.github.io/TSUBAKI_HP/
+SITE_BASE_PATH=/TSUBAKI_HP
 ```
 
-Cloudflareの `CONTACT_TO_EMAIL` を設定した場合は、その値が優先されます。同じ送信先を維持する場合は次を設定してください。
+リポジトリ名を変えた場合は両方を新しい名前へ変更します。
+
+### Actionsで`Missing script: build`
+
+リポジトリ直下の`package.json`を使っているか確認します。GitHubへアップロードするときにフォルダが二重になっていないか確認してください。
+
+### 問い合わせが「準備中」になる
+
+`content/site.json`の`contactEndpoint`が次のままです。
 
 ```text
-CONTACT_TO_EMAIL=tsubaki.tech.jp@gmail.com
+https://formspree.io/f/YOUR_FORM_ID
 ```
+
+Formspreeで発行された実際のエンドポイントへ置き換えてCommitしてください。
+
+### 問い合わせ送信に失敗する
+
+- Formspreeのフォームが削除されていないか
+- Form IDの入力ミスがないか
+- Formspreeアカウントのメール確認が完了しているか
+- 通知先が`tsubaki.tech.jp@gmail.com`か
+- FormspreeのSubmission画面に記録があるか
+- 迷惑メールフォルダへ入っていないか
+
+### GitHubリポジトリ一覧が表示されない
+
+GitHub APIの一時的な回数制限や通信失敗の可能性があります。サイト上部のGitHubリンクからリポジトリ自体は開けます。時間を置いて再読み込みしてください。
+
+### 変更が反映されない
+
+1. GitHubの`main`にCommitされているか確認
+2. Actionsの最新実行を確認
+3. ブラウザで`Ctrl + F5`を押す
+4. 公開中のActions実行が最新Commitか確認
