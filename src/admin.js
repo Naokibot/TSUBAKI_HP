@@ -2,8 +2,14 @@ const body = document.body;
 const apiBase = body.dataset.adminApiBase || '/api/admin';
 const loginView = document.querySelector('#admin-login-view');
 const editorView = document.querySelector('#admin-editor-view');
-const loginForm = document.querySelector('#admin-login-form');
+const emailForm = document.querySelector('#admin-email-form');
+const codeForm = document.querySelector('#admin-code-form');
+const emailInput = document.querySelector('#admin-email');
+const codeInput = document.querySelector('#admin-code');
+const pendingEmail = document.querySelector('#pending-admin-email');
 const loginStatus = document.querySelector('#admin-login-status');
+const resendButton = document.querySelector('#admin-resend-code');
+const changeEmailButton = document.querySelector('#admin-change-email');
 const editorStatus = document.querySelector('#admin-editor-status');
 const contentSelect = document.querySelector('#admin-content-select');
 const contentEditor = document.querySelector('#admin-content-editor');
@@ -13,6 +19,7 @@ const reloadButton = document.querySelector('#admin-reload');
 const logoutButton = document.querySelector('#admin-logout');
 let csrf = '';
 let currentSha = '';
+let loginEmail = '';
 
 async function api(path, options = {}) {
   const response = await fetch(`${apiBase}/${path}`, {
@@ -32,13 +39,33 @@ async function api(path, options = {}) {
 function showLogin(message = '') {
   loginView.hidden = false;
   editorView.hidden = true;
+  emailForm.hidden = false;
+  codeForm.hidden = true;
   loginStatus.textContent = message;
+}
+
+function showCodeStep(email, message = '') {
+  loginEmail = email.trim().toLowerCase();
+  pendingEmail.textContent = loginEmail;
+  emailForm.hidden = true;
+  codeForm.hidden = false;
+  loginStatus.textContent = message;
+  codeInput.value = '';
+  codeInput.focus();
 }
 
 function showEditor(email) {
   loginView.hidden = true;
   editorView.hidden = false;
   currentAdmin.textContent = email;
+}
+
+async function requestCode(email) {
+  const result = await api('login', {
+    method: 'POST',
+    body: JSON.stringify({ email })
+  });
+  showCodeStep(email, result.message || '認証コードを送信しました。');
 }
 
 async function loadContent() {
@@ -68,23 +95,62 @@ async function restoreSession() {
   }
 }
 
-loginForm?.addEventListener('submit', async (event) => {
+emailForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
-  const submit = loginForm.querySelector('button[type="submit"]');
+  const submit = emailForm.querySelector('button[type="submit"]');
   submit.disabled = true;
-  loginStatus.textContent = 'ログイン中…';
+  loginStatus.textContent = '認証コードを送信しています…';
   try {
-    const form = new FormData(loginForm);
-    const result = await api('login', { method: 'POST', body: JSON.stringify(Object.fromEntries(form)) });
-    csrf = result.csrf;
-    loginForm.reset();
-    showEditor(result.email);
-    await loadContent();
+    await requestCode(emailInput.value);
   } catch (error) {
-    loginStatus.textContent = `${error.message} Cloudflare Pagesでの秘密変数設定も確認してください。`;
+    loginStatus.textContent = `${error.message} Cloudflare Pagesのメール認証設定も確認してください。`;
   } finally {
     submit.disabled = false;
   }
+});
+
+codeForm?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const submit = codeForm.querySelector('button[type="submit"]');
+  submit.disabled = true;
+  loginStatus.textContent = '認証コードを確認しています…';
+  try {
+    const result = await api('verify', {
+      method: 'POST',
+      body: JSON.stringify({ email: loginEmail, code: codeInput.value })
+    });
+    csrf = result.csrf;
+    codeForm.reset();
+    showEditor(result.email);
+    await loadContent();
+  } catch (error) {
+    loginStatus.textContent = error.message;
+    codeInput.select();
+  } finally {
+    submit.disabled = false;
+  }
+});
+
+resendButton?.addEventListener('click', async () => {
+  resendButton.disabled = true;
+  loginStatus.textContent = '新しい認証コードを送信しています…';
+  try {
+    await requestCode(loginEmail);
+  } catch (error) {
+    loginStatus.textContent = error.message;
+  } finally {
+    resendButton.disabled = false;
+  }
+});
+
+changeEmailButton?.addEventListener('click', () => {
+  loginEmail = '';
+  showLogin();
+  emailInput.focus();
+});
+
+codeInput?.addEventListener('input', () => {
+  codeInput.value = codeInput.value.replace(/\D/g, '').slice(0, 6);
 });
 
 contentSelect?.addEventListener('change', loadContent);
@@ -119,6 +185,7 @@ logoutButton?.addEventListener('click', async () => {
   try { await api('logout', { method: 'POST', body: '{}' }); } catch { /* cookie is still cleared when possible */ }
   csrf = '';
   currentSha = '';
+  loginEmail = '';
   showLogin('ログアウトしました。');
 });
 
