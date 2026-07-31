@@ -61,13 +61,12 @@
 
 | 変更したい内容 | 編集場所 |
 |---|---|
-| フォームに表示するメール | `content/site.json` の `email` |
-| APIの送信処理 | `functions/api/contact.js` |
-| メール件名 | `functions/api/contact.js` の `subject` |
-| 送信先 | Cloudflare Pagesの環境変数 `CONTACT_TO_EMAIL` |
-| 送信元 | 環境変数 `CONTACT_FROM_EMAIL` |
-| Turnstile公開キー | `content/site.json` の `turnstileSiteKey` |
-| Turnstile秘密鍵 | 環境変数 `TURNSTILE_SECRET` |
+| 表示メールアドレス | `content/site.json` の `email` |
+| Formspree送信先 | `content/site.json` の `contactEndpoint` |
+| フォーム項目 | `scripts/build.mjs` 内の `contact-form` |
+| 送信処理とエラー表示 | `src/app.js` |
+
+通知先メールアドレスはFormspreeのDashboard側で設定します。管理者ログイン機能はGitHub Pages版では使用しません。サイトの編集はGitHubまたはローカルのJSONファイルから行います。
 
 ## アクセス解析
 
@@ -79,7 +78,7 @@
 ## 変更後の確認
 
 ```bat
-cd /d "C:\Users\sagak\Downloads\TSUBAKI_HP_Source\TSUBAKI_Portfolio"
+cd /d "プロジェクトフォルダの実際のパス"
 npm run check
 npm run build
 npm run dev
@@ -95,4 +94,4 @@ git commit -m "update portfolio content"
 git push origin main
 ```
 
-GitHub PagesまたはCloudflare Pagesと接続していれば、`main`へのpush後に自動で再公開されます。
+GitHub Pagesが`main`へのpush後に自動で再公開します。
