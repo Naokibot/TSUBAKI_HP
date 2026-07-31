@@ -91,11 +91,11 @@ GitHub Pagesは、作品紹介サイトを無料で公開する方法として�
 
 ### GitHub Pagesの注意点
 
-GitHub Pagesではサーバー処理を実行できないため、同梱の `/api/contact` は動作しません。お問い合わせフォームを使う場合は、Formspreeなどの外部フォームURLを `contactEndpoint` に設定してください。
+GitHub Pagesではサーバー処理を実行できないため、同梱の `/api/contact` と管理者ログイン機能は動作しません。これらを使用する場合はCloudflare Pagesで公開してください。
 
 ## 4. 推奨の本番公開: Cloudflare Pages
 
-お問い合わせフォーム、Turnstile、独自ドメインまで使用するならCloudflare Pagesを推奨します。
+お問い合わせフォーム、管理者ログイン、Turnstile、独自ドメインまで使用するならCloudflare Pagesを推奨します。
 
 1. Cloudflare Dashboardで `Workers & Pages` を開く
 2. `Create` → `Pages` → `Connect to Git`
@@ -105,14 +105,14 @@ GitHub Pagesではサーバー処理を実行できないため、同梱の `/ap
 6. Root directoryは空欄にする
 7. デプロイする
 
-Cloudflare Pagesでは `functions/api/contact.js` が自動的にFunctionsとして認識されます。
+Cloudflare Pagesでは `functions/api/contact.js` と `functions/api/admin/` が自動的にFunctionsとして認識されます。
 
 ### 問い合わせフォーム用環境変数
 
 Cloudflare PagesのSettings → Variables and Secretsで設定します。
 
 - `RESEND_API_KEY`
-- `CONTACT_TO_EMAIL`
+- `CONTACT_TO_EMAIL=tsubaki.tech.jp@gmail.com`
 - `CONTACT_FROM_EMAIL`
 - `TURNSTILE_SECRET`（推奨）
 
@@ -135,3 +135,34 @@ git push origin main
 ```
 
 GitHub PagesまたはCloudflare Pagesが自動的に再公開します。
+
+## 6. 管理者ログインとブラウザ編集
+
+サイト最下部に「管理者用ログイン」ボタンがあります。初期管理者メールは `tsubaki.tech.jp@gmail.com` です。
+
+管理画面はCloudflare Pages Functionsを使用するため、GitHub Pagesだけでは動作しません。Cloudflare PagesのVariables and Secretsに次を設定してください。
+
+```text
+ADMIN_EMAILS=tsubaki.tech.jp@gmail.com
+ADMIN_PASSWORD=管理者パスワード
+SESSION_SECRET=ランダムな長い文字列
+GITHUB_TOKEN=TSUBAKI_HPだけを書き換えられるGitHubトークン
+GITHUB_REPOSITORY=Naokibot/TSUBAKI_HP
+GITHUB_BRANCH=main
+```
+
+詳しい権限設定、ローカル確認、セキュリティ仕様は `docs/ADMIN_SETUP_JA.md` を参照してください。
+
+## 7. 問い合わせメール送信先
+
+問い合わせの送信先は次です。
+
+```text
+tsubaki.tech.jp@gmail.com
+```
+
+Cloudflareの `CONTACT_TO_EMAIL` を設定した場合は、その値が優先されます。同じ送信先を維持する場合は次を設定してください。
+
+```text
+CONTACT_TO_EMAIL=tsubaki.tech.jp@gmail.com
+```
