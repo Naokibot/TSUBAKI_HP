@@ -1,12 +1,12 @@
 {
   "name": "tsubaki-tech-portfolio",
-  "version": "2.0.0",
+  "version": "3.1.0",
   "private": true,
   "type": "module",
-  "description": "An eight-language, dependency-free portfolio website for TSUBAKI Tech, published with GitHub Pages.",
+  "description": "A multilingual TSUBAKI Tech portfolio for GitHub Pages.",
   "scripts": {
-    "validate": "node scripts/validate-translations.mjs",
-    "check": "npm run validate && node --check src/app.js && node --check scripts/build.mjs && node --check scripts/serve.mjs && node --check scripts/update-og-references.mjs",
+    "validate": "node scripts/validate-release.mjs",
+    "check": "npm run validate && node --check src/app.js && node --check scripts/build.mjs && node --check scripts/validate-release.mjs && node --check scripts/serve.mjs && node --check scripts/update-og-references.mjs",
     "build": "npm run validate && node scripts/build.mjs && node scripts/update-og-references.mjs",
     "build:pages": "SITE_BASE_URL=https://naokibot.github.io/TSUBAKI_HP/ SITE_BASE_PATH=/TSUBAKI_HP npm run build",
     "serve": "node scripts/serve.mjs",
