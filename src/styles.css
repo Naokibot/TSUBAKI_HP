@@ -62,7 +62,15 @@ button { color: inherit; }
 .nav nav a:not(.nav-contact):hover { color: var(--accent); }
 .nav-contact { padding: 10px 17px; background: var(--ink); color: var(--bg); border-radius: 999px; }
 .nav-contact:hover { background: var(--accent); color: #fff; }
-.lang { color: var(--muted); }
+.language-menu { position: relative; }
+.language-menu summary { min-width: 48px; height: 36px; padding: 0 11px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); cursor: pointer; list-style: none; font-size: .7rem; font-weight: 850; letter-spacing: .07em; }
+.language-menu summary::-webkit-details-marker { display: none; }
+.language-menu summary i { font-style: normal; color: var(--muted); transition: transform .2s ease; }
+.language-menu[open] summary i { transform: rotate(180deg); }
+.language-menu > div { position: absolute; top: calc(100% + 10px); right: 0; z-index: 20; width: max-content; min-width: 210px; padding: 9px; display: grid; gap: 2px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); }
+.nav nav .language-menu a { padding: 9px 11px; border-radius: 10px; color: var(--muted); font-size: .76rem; letter-spacing: 0; text-transform: none; }
+.nav nav .language-menu a:hover,
+.nav nav .language-menu a[aria-current="page"] { background: var(--soft); color: var(--accent); }
 .theme { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); cursor: pointer; display: grid; place-items: center; }
 .nav-toggle { display: none; width: 46px; height: 46px; border: 0; border-radius: 50%; background: var(--ink); cursor: pointer; position: relative; }
 .nav-toggle span { position: absolute; width: 18px; height: 1px; left: 14px; background: var(--bg); transition: .25s; }
@@ -274,6 +282,10 @@ button { color: inherit; }
   .nav nav.open { display: flex; }
   .nav nav a { padding: 10px 3px; font-size: .78rem; }
   .nav-contact { text-align: center; color: var(--bg); }
+  .language-menu { width: 100%; margin-top: 6px; }
+  .language-menu summary { width: 100%; justify-content: space-between; }
+  .language-menu > div { position: static; width: 100%; min-width: 0; margin-top: 8px; box-shadow: none; }
+  .nav nav .language-menu a { padding: 10px 12px; }
   .theme { margin-top: 7px; }
   .hero-home { min-height: auto; padding: 130px 0 100px; }
   .hero-stage { grid-template-columns: 1fr; }
