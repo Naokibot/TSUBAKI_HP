@@ -1,16 +1,16 @@
 [
   {
-    "slug": "naokibot",
-    "icon": "/members/naokibot.svg",
+    "slug": "hotaru",
+    "icon": "/members/hotaru.svg",
     "name": {
-      "ja": "Naokibot",
-      "en": "Naokibot",
-      "ru": "Naokibot",
-      "zh-TW": "Naokibot",
-      "ko": "Naokibot",
-      "hi": "Naokibot",
-      "fr": "Naokibot",
-      "de": "Naokibot"
+      "ja": "Hotaru",
+      "en": "Hotaru",
+      "ru": "Hotaru",
+      "zh-TW": "Hotaru",
+      "ko": "Hotaru",
+      "hi": "Hotaru",
+      "fr": "Hotaru",
+      "de": "Hotaru"
     },
     "role": {
       "ja": "開発メンバー",
