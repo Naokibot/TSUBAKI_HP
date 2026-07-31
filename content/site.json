@@ -1,1 +1,100 @@
-{"name":"TSUBAKI Tech","tagline":{"ja":"つくることで、学びを変える。","en":"Changing how we learn by building.","ru":"Меняем обучение, создавая.","zh-TW":"用創造，改變學習。","ko":"만들면서, 배움을 바꿉니다.","hi":"बनाते हुए सीखने का तरीका बदलते हैं।","fr":"Créer pour transformer l’apprentissage.","de":"Wir verändern Lernen, indem wir gestalten."},"description":{"ja":"TSUBAKI Techは、教育・集中・プログラミングの『分かりにくい』を、触って理解できるプロダクトへ変える学生開発チームです。","en":"TSUBAKI Tech is a student development team turning hard-to-understand ideas in education, focus, and programming into interactive products.","ru":"TSUBAKI Tech — студенческая команда разработчиков, которая превращает сложные для понимания темы в образовании, концентрации и программировании в интерактивные продукты.","zh-TW":"TSUBAKI Tech 是一支由學生主導的開發團隊，將教育、專注力與程式設計中不易理解的概念，轉化為能親手操作、直覺理解的產品。","ko":"TSUBAKI Tech는 교육, 집중, 프로그래밍에서 이해하기 어려운 개념을 직접 조작하며 배울 수 있는 제품으로 바꾸는 학생 개발 팀입니다.","hi":"TSUBAKI Tech छात्रों की एक विकास टीम है, जो शिक्षा, एकाग्रता और प्रोग्रामिंग की कठिन अवधारणाओं को ऐसे इंटरैक्टिव उत्पादों में बदलती है जिन्हें छूकर और प्रयोग करके समझा जा सके।","fr":"TSUBAKI Tech est une équipe de développement étudiante qui transforme les notions difficiles à comprendre dans l’éducation, la concentration et la programmation en produits interactifs.","de":"TSUBAKI Tech ist ein studentisches Entwicklungsteam, das schwer verständliche Themen aus Bildung, Konzentration und Programmierung in interaktive Produkte verwandelt."},"about":{"ja":"私たちは、日常で感じた小さな不便や学習のつまずきを出発点に、調査、設計、実装、利用者テストまで自分たちで行います。見た目だけではなく、仕組みを説明できるプロダクトを目指しています。","en":"We start with small frustrations and learning obstacles from everyday life, then handle research, design, implementation, and user testing ourselves. We aim to build products whose mechanisms can be clearly explained, not just attractive interfaces.","ru":"Мы начинаем с небольших неудобств и трудностей в обучении, с которыми сталкиваемся каждый день, а затем самостоятельно проводим исследование, проектируем, программируем и тестируем решения с пользователями. Для нас важно не только создать привлекательный интерфейс, но и уметь понятно объяснить, как работает продукт.","zh-TW":"我們從日常生活中的小小不便與學習卡關出發，親自完成調查、設計、實作與使用者測試。我們追求的不只是好看的介面，更希望每一項產品背後的運作方式都能被清楚說明。","ko":"우리는 일상에서 느낀 작은 불편과 학습의 막힘에서 출발해 조사, 설계, 구현, 사용자 테스트까지 직접 진행합니다. 보기 좋은 화면에 그치지 않고, 작동 원리를 설명할 수 있는 제품을 만드는 것이 목표입니다.","hi":"हम रोज़मर्रा की छोटी असुविधाओं और सीखने में आने वाली रुकावटों से शुरुआत करते हैं। शोध, डिज़ाइन, विकास और उपयोगकर्ता परीक्षण—हर चरण हम स्वयं करते हैं। हमारा लक्ष्य केवल सुंदर इंटरफ़ेस बनाना नहीं, बल्कि ऐसा उत्पाद बनाना है जिसकी कार्यप्रणाली स्पष्ट रूप से समझाई जा सके।","fr":"Nous partons de petites difficultés du quotidien et de blocages rencontrés pendant l’apprentissage, puis nous menons nous-mêmes la recherche, la conception, le développement et les tests utilisateurs. Notre objectif ne se limite pas à créer de belles interfaces : nous voulons aussi pouvoir expliquer clairement le fonctionnement de chaque produit.","de":"Wir beginnen bei kleinen Alltagsproblemen und Lernhürden und übernehmen Recherche, Konzeption, Umsetzung und Nutzertests selbst. Unser Ziel sind nicht nur ansprechende Oberflächen, sondern Produkte, deren Funktionsweise sich verständlich erklären lässt."},"developmentSince":{"ja":"2025年から、次世代の学習体験を目指すプログラミングエディターを開発しています。","en":"Since 2025, we have been developing a programming editor designed for the next generation of learning experiences.","ru":"С 2025 года мы разрабатываем программный редактор для нового поколения образовательных продуктов.","zh-TW":"自 2025 年起，我們持續開發面向下一代學習體驗的程式設計編輯器。","ko":"2025년부터 차세대 학습 경험을 위한 프로그래밍 에디터를 개발하고 있습니다.","hi":"2025 से हम अगली पीढ़ी के सीखने के अनुभवों के लिए एक प्रोग्रामिंग एडिटर विकसित कर रहे हैं।","fr":"Depuis 2025, nous développons un éditeur de programmation pensé pour la prochaine génération d’expériences d’apprentissage.","de":"Seit 2025 entwickeln wir einen Programmiereditor für die nächste Generation von Lernerfahrungen."},"footerTagline":{"ja":"つくることで、学びを変える。次世代の機能を作っていく。","en":"Changing how we learn by building. Creating the features of the next generation.","ru":"Меняем обучение, создавая. Разрабатываем функции следующего поколения.","zh-TW":"用創造，改變學習。持續打造下一代功能。","ko":"만들면서 배움을 바꿉니다. 차세대 기능을 만들어 갑니다.","hi":"बनाते हुए सीखने का तरीका बदलते हैं। अगली पीढ़ी की सुविधाएँ बनाते हैं।","fr":"Créer pour transformer l’apprentissage. Concevoir les fonctionnalités de demain.","de":"Wir verändern Lernen, indem wir gestalten. Wir entwickeln die Funktionen der nächsten Generation."},"stats":[{"value":"2","label":{"ja":"主要プロジェクト","en":"Core projects","ru":"Основных проекта","zh-TW":"主要專案","ko":"주요 프로젝트","hi":"मुख्य परियोजनाएँ","fr":"Projets principaux","de":"Kernprojekte"}},{"value":"8","label":{"ja":"対応言語","en":"Languages","ru":"Языков","zh-TW":"支援語言","ko":"지원 언어","hi":"समर्थित भाषाएँ","fr":"Langues","de":"Sprachen"}},{"value":"2025","label":{"ja":"エディター開発開始","en":"Editor development began","ru":"Начало разработки редактора","zh-TW":"開始開發編輯器","ko":"에디터 개발 시작","hi":"एडिटर विकास की शुरुआत","fr":"Début du développement de l’éditeur","de":"Beginn der Editorentwicklung"}}],"baseUrl":"https://naokibot.github.io/TSUBAKI_HP/","githubUrl":"https://github.com/Naokibot","plausibleDomain":"","gaMeasurementId":"","copyrightYear":2026,"basePath":""}
+{
+  "name": "Hotaru Ascend",
+  "tagline": {
+    "ja": "つくることで、学びを変える。",
+    "en": "Changing how we learn by building.",
+    "ru": "Меняем обучение, создавая.",
+    "zh-TW": "用創造，改變學習。",
+    "ko": "만들면서, 배움을 바꿉니다.",
+    "hi": "बनाते हुए सीखने का तरीका बदलते हैं।",
+    "fr": "Créer pour transformer l’apprentissage.",
+    "de": "Wir verändern Lernen, indem wir gestalten."
+  },
+  "description": {
+    "ja": "Hotaru Ascendは、教育・集中・プログラミングの「分かりにくい」を、触って理解できるプロダクトへ変える学生開発チームです。",
+    "en": "Hotaru Ascend is a student development team that turns hard-to-understand ideas in education, focus, and programming into interactive products.",
+    "ru": "Hotaru Ascend — студенческая команда разработчиков, которая превращает сложные идеи из образования, концентрации и программирования в интерактивные продукты.",
+    "zh-TW": "Hotaru Ascend 是一支由學生主導的開發團隊，將教育、專注力與程式設計中不易理解的概念，轉化為能親手操作、直覺理解的產品。",
+    "ko": "Hotaru Ascend는 교육, 집중, 프로그래밍에서 이해하기 어려운 개념을 직접 조작하며 배울 수 있는 제품으로 바꾸는 학생 개발 팀입니다.",
+    "hi": "Hotaru Ascend छात्रों की एक विकास टीम है, जो शिक्षा, एकाग्रता और प्रोग्रामिंग की कठिन अवधारणाओं को ऐसे इंटरैक्टिव उत्पादों में बदलती है जिन्हें प्रयोग करके समझा जा सके।",
+    "fr": "Hotaru Ascend est une équipe de développement étudiante qui transforme les notions difficiles à comprendre dans l’éducation, la concentration et la programmation en produits interactifs.",
+    "de": "Hotaru Ascend ist ein studentisches Entwicklungsteam, das schwer verständliche Themen aus Bildung, Konzentration und Programmierung in interaktive Produkte verwandelt."
+  },
+  "about": {
+    "ja": "私たちは、日常で感じた小さな不便や学習のつまずきを出発点に、調査、設計、実装、利用者テストまで自分たちで行います。見た目だけではなく、仕組みを説明できるプロダクトを目指しています。",
+    "en": "We start with small frustrations and learning obstacles from everyday life, then handle research, design, implementation, and user testing ourselves. We aim to build products whose mechanisms can be clearly explained, not just attractive interfaces.",
+    "ru": "Мы начинаем с небольших неудобств и трудностей в обучении, с которыми сталкиваемся каждый день, а затем самостоятельно проводим исследование, проектируем, программируем и тестируем решения с пользователями. Для нас важно не только создать привлекательный интерфейс, но и уметь понятно объяснить, как работает продукт.",
+    "zh-TW": "我們從日常生活中的小小不便與學習卡關出發，親自完成調查、設計、實作與使用者測試。我們追求的不只是好看的介面，更希望每一項產品背後的運作方式都能被清楚說明。",
+    "ko": "우리는 일상에서 느낀 작은 불편과 학습의 막힘에서 출발해 조사, 설계, 구현, 사용자 테스트까지 직접 진행합니다. 보기 좋은 화면에 그치지 않고, 작동 원리를 설명할 수 있는 제품을 만드는 것이 목표입니다.",
+    "hi": "हम रोज़मर्रा की छोटी असुविधाओं और सीखने में आने वाली रुकावटों से शुरुआत करते हैं। शोध, डिज़ाइन, विकास और उपयोगकर्ता परीक्षण—हर चरण हम स्वयं करते हैं। हमारा लक्ष्य केवल सुंदर इंटरफ़ेस बनाना नहीं, बल्कि ऐसा उत्पाद बनाना है जिसकी कार्यप्रणाली स्पष्ट रूप से समझाई जा सके।",
+    "fr": "Nous partons de petites difficultés du quotidien et de blocages rencontrés pendant l’apprentissage, puis nous menons nous-mêmes la recherche, la conception, le développement et les tests utilisateurs. Notre objectif ne se limite pas à créer de belles interfaces : nous voulons aussi pouvoir expliquer clairement le fonctionnement de chaque produit.",
+    "de": "Wir beginnen bei kleinen Alltagsproblemen und Lernhürden und übernehmen Recherche, Konzeption, Umsetzung und Nutzertests selbst. Unser Ziel sind nicht nur ansprechende Oberflächen, sondern Produkte, deren Funktionsweise sich verständlich erklären lässt."
+  },
+  "developmentSince": {
+    "ja": "2025年から、次世代の学習体験を目指すプログラミングエディターを開発しています。",
+    "en": "Since 2025, we have been developing a programming editor designed for the next generation of learning experiences.",
+    "ru": "С 2025 года мы разрабатываем программный редактор для нового поколения образовательных продуктов.",
+    "zh-TW": "自 2025 年起，我們持續開發面向下一代學習體驗的程式設計編輯器。",
+    "ko": "2025년부터 차세대 학습 경험을 위한 프로그래밍 에디터를 개발하고 있습니다.",
+    "hi": "2025 से हम अगली पीढ़ी के सीखने के अनुभवों के लिए एक प्रोग्रामिंग एडिटर विकसित कर रहे हैं।",
+    "fr": "Depuis 2025, nous développons un éditeur de programmation pensé pour la prochaine génération d’expériences d’apprentissage.",
+    "de": "Seit 2025 entwickeln wir einen Programmiereditor für die nächste Generation von Lernerfahrungen."
+  },
+  "footerTagline": {
+    "ja": "つくることで、学びを変える。次世代の機能を作っていく。",
+    "en": "Changing how we learn by building. Creating the features of the next generation.",
+    "ru": "Меняем обучение, создавая. Разрабатываем функции следующего поколения.",
+    "zh-TW": "用創造，改變學習。持續打造下一代功能。",
+    "ko": "만들면서 배움을 바꿉니다. 차세대 기능을 만들어 갑니다.",
+    "hi": "बनाते हुए सीखने का तरीका बदलते हैं। अगली पीढ़ी की सुविधाएँ बनाते हैं।",
+    "fr": "Créer pour transformer l’apprentissage. Concevoir les fonctionnalités de demain.",
+    "de": "Wir verändern Lernen, indem wir gestalten. Wir entwickeln die Funktionen der nächsten Generation."
+  },
+  "stats": [
+    {
+      "value": "2",
+      "label": {
+        "ja": "主要プロジェクト",
+        "en": "Core projects",
+        "ru": "Основных проекта",
+        "zh-TW": "主要專案",
+        "ko": "주요 프로젝트",
+        "hi": "मुख्य परियोजनाएँ",
+        "fr": "Projets principaux",
+        "de": "Kernprojekte"
+      }
+    },
+    {
+      "value": "8",
+      "label": {
+        "ja": "対応言語",
+        "en": "Languages",
+        "ru": "Языков",
+        "zh-TW": "支援語言",
+        "ko": "지원 언어",
+        "hi": "समर्थित भाषाएँ",
+        "fr": "Langues",
+        "de": "Sprachen"
+      }
+    },
+    {
+      "value": "2025",
+      "label": {
+        "ja": "エディター開発開始",
+        "en": "Editor development began",
+        "ru": "Начало разработки редактора",
+        "zh-TW": "開始開發編輯器",
+        "ko": "에디터 개발 시작",
+        "hi": "एडिटर विकास की शुरुआत",
+        "fr": "Début du développement de l’éditeur",
+        "de": "Beginn der Editorentwicklung"
+      }
+    }
+  ],
+  "baseUrl": "https://naokibot.github.io/TSUBAKI_HP/",
+  "githubUrl": "https://github.com/Naokibot",
+  "plausibleDomain": "",
+  "gaMeasurementId": "",
+  "copyrightYear": 2026,
+  "basePath": ""
+}
