@@ -35,6 +35,8 @@ http://localhost:4173
 ### 公開用ファイルを確認する
 
 ```bash
+npm run check
+npm run test:admin-auth
 npm run build
 npm run serve
 ```
@@ -87,15 +89,15 @@ GitHub Pagesは、作品紹介サイトを無料で公開する方法として�
 6. `Actions`の `Deploy portfolio to GitHub Pages` が成功するのを確認する
 7. `https://naokibot.github.io/TSUBAKI_HP/` を開く
 
-`.github/workflows/deploy-pages.yml`が、`main`更新時に自動でビルド・公開します。
+`.github/workflows/deploy-pages.yml`が、`main`更新時に自動で構文確認、認証テスト、ビルド、公開を行います。
 
 ### GitHub Pagesの注意点
 
-GitHub Pagesではサーバー処理を実行できないため、同梱の `/api/contact` と管理者ログイン機能は動作しません。これらを使用する場合はCloudflare Pagesで公開してください。
+GitHub Pagesではサーバー処理を実行できないため、同梱の `/api/contact` と管理者メール認証は動作しません。お問い合わせフォームを使う場合は外部フォームURLを `contactEndpoint` に設定してください。管理者機能を使う場合はCloudflare Pagesで公開してください。
 
 ## 4. 推奨の本番公開: Cloudflare Pages
 
-お問い合わせフォーム、管理者ログイン、Turnstile、独自ドメインまで使用するならCloudflare Pagesを推奨します。
+お問い合わせフォーム、メール認証管理画面、Turnstile、独自ドメインまで使用するならCloudflare Pagesを推奨します。
 
 1. Cloudflare Dashboardで `Workers & Pages` を開く
 2. `Create` → `Pages` → `Connect to Git`
@@ -105,14 +107,14 @@ GitHub Pagesではサーバー処理を実行できないため、同梱の `/ap
 6. Root directoryは空欄にする
 7. デプロイする
 
-Cloudflare Pagesでは `functions/api/contact.js` と `functions/api/admin/` が自動的にFunctionsとして認識されます。
+Cloudflare Pagesでは `functions/api/contact.js` と `functions/api/admin/` がPages Functionsとして認識されます。
 
 ### 問い合わせフォーム用環境変数
 
 Cloudflare PagesのSettings → Variables and Secretsで設定します。
 
 - `RESEND_API_KEY`
-- `CONTACT_TO_EMAIL=tsubaki.tech.jp@gmail.com`
+- `CONTACT_TO_EMAIL`
 - `CONTACT_FROM_EMAIL`
 - `TURNSTILE_SECRET`（推奨）
 
@@ -128,6 +130,7 @@ Cloudflare PagesのCustom domainsからドメインを追加します。設定�
 
 ```bash
 npm run check
+npm run test:admin-auth
 npm run build
 git add .
 git commit -m "update portfolio content"
@@ -138,20 +141,31 @@ GitHub PagesまたはCloudflare Pagesが自動的に再公開します。
 
 ## 6. 管理者ログインとブラウザ編集
 
-サイト最下部に「管理者用ログイン」ボタンがあります。初期管理者メールは `tsubaki.tech.jp@gmail.com` です。
-
-管理画面はCloudflare Pages Functionsを使用するため、GitHub Pagesだけでは動作しません。Cloudflare PagesのVariables and Secretsに次を設定してください。
+サイト最下部に「管理者用ログイン」ボタンがあります。管理者は次の2件だけに固定されています。
 
 ```text
-ADMIN_EMAILS=tsubaki.tech.jp@gmail.com
-ADMIN_PASSWORD=管理者パスワード
+tomatonabe0120@gmail.com
+tsubaki.tech.jp@gmail.com
+```
+
+ログインはパスワードを使わず、メールへ届く6桁のワンタイムコードだけで行います。Cloudflare PagesのVariables and Secretsへ次を設定してください。
+
+```text
 SESSION_SECRET=ランダムな長い文字列
+RESEND_API_KEY=Resend APIキー
+ADMIN_FROM_EMAIL=Resendで認証済みの送信元メール
 GITHUB_TOKEN=TSUBAKI_HPだけを書き換えられるGitHubトークン
 GITHUB_REPOSITORY=Naokibot/TSUBAKI_HP
 GITHUB_BRANCH=main
 ```
 
-詳しい権限設定、ローカル確認、セキュリティ仕様は `docs/ADMIN_SETUP_JA.md` を参照してください。
+さらにCloudflare KVを作成し、Pagesプロジェクトへ次のbinding名で接続します。
+
+```text
+ADMIN_AUTH_KV
+```
+
+`ADMIN_PASSWORD`と`ADMIN_EMAILS`は使用しません。詳しい設定とセキュリティ仕様は`docs/ADMIN_SETUP_JA.md`を参照してください。
 
 ## 7. 問い合わせメール送信先
 
