@@ -2,168 +2,154 @@
 
 ## 1. 公開方式
 
-このサイトはGitHub Actionsで静的HTMLを生成し、GitHub Pagesへ公開します。
-
-公開URL:
+このサイトはGitHub Actionsで翻訳検証と静的HTML生成を行い、GitHub Pagesへ公開します。
 
 ```text
 https://naokibot.github.io/TSUBAKI_HP/
 ```
 
-GitHub Pagesではサーバー側のJavaScriptやデータベースを実行できないため、管理者ログイン、メール認証、Cloudflare Functionsは使用しません。問い合わせはFormspreeへ直接送信します。
+GitHub Pagesではサーバー側処理を実行できないため、問い合わせはFormspreeへ直接送信します。
 
 ## 2. ローカル確認
 
-### ZIPを使う場合
-
-1. ZIPを右クリックして「すべて展開」する
-2. 展開したフォルダを開く
-3. `START_WINDOWS.bat`をダブルクリックする
-4. `http://localhost:4173`を開く
-
-### コマンドを使う場合
+ZIPを展開し、プロジェクト直下で次を実行します。
 
 ```bat
-cd /d "プロジェクトフォルダの実際のパス"
+npm run validate
 npm run check
 npm run dev
 ```
 
-終了は `Ctrl + C` です。
-
-### GitHub Pagesと同じURL構成で確認
-
-Windows PowerShell:
-
-```powershell
-$env:SITE_BASE_URL="https://naokibot.github.io/TSUBAKI_HP/"
-$env:SITE_BASE_PATH="/TSUBAKI_HP"
-npm run build
-npm run serve -- --base-path=/TSUBAKI_HP
-```
-
-ブラウザで次を開きます。
+ブラウザで開きます。
 
 ```text
-http://localhost:4173/TSUBAKI_HP/
+http://localhost:4173
 ```
 
-## 3. Formspreeを準備
+終了は `Ctrl + C` です。
+
+GitHub Pages用パスを含む本番ビルドだけを確認する場合：
+
+```bat
+npm run build:pages
+```
+
+## 3. 問い合わせフォームを準備
 
 1. Formspreeへ登録する
 2. 登録メールアドレスを確認する
-3. Dashboardで `New Form` を作成する
+3. Dashboardでフォームを作成する
 4. 通知先を `tsubaki.tech.jp@gmail.com` にする
 5. Integration画面のエンドポイントをコピーする
-
-例:
-
-```text
-https://formspree.io/f/abcdwxyz
-```
-
-`content/site.json`を開き、次を実際の値へ変更します。
+6. `content/site.json`の`contactEndpoint`へ設定する
 
 ```json
-"contactEndpoint": "https://formspree.io/f/abcdwxyz"
+"contactEndpoint": "https://formspree.io/f/実際のフォームID"
 ```
 
-`YOUR_FORM_ID`のままではフォームは送信されません。その場合も表示メールアドレスから直接連絡できます。
+`YOUR_FORM_ID`のままでは送信されません。
 
 ## 4. GitHub Pagesを有効化
 
-1. GitHubで `Naokibot/TSUBAKI_HP` を開く
-2. `Settings`を開く
-3. 左メニューの`Pages`を開く
-4. `Build and deployment`のSourceを`GitHub Actions`にする
-5. `Actions`を開く
-6. `Deploy portfolio to GitHub Pages`を選択する
-7. `Run workflow`を押す
-8. 緑色のチェックが付くことを確認する
+1. `Naokibot/TSUBAKI_HP`を開く
+2. `Settings` → `Pages`を開く
+3. Sourceを`GitHub Actions`にする
+4. `Actions`を開く
+5. `Deploy portfolio to GitHub Pages`を選ぶ
+6. `Run workflow`を押す
+7. 緑色のチェックを確認する
 
-公開後は次を開きます。
+以後は`main`へpushすると自動で検証・ビルド・公開されます。
 
-```text
-https://naokibot.github.io/TSUBAKI_HP/
-```
+## 5. 公開後の確認
 
-## 5. 更新を公開
+| 言語 | URL |
+|---|---|
+| 日本語 | `/TSUBAKI_HP/` |
+| 英語 | `/TSUBAKI_HP/en/` |
+| ロシア語 | `/TSUBAKI_HP/ru/` |
+| 繁體中文（台湾向け） | `/TSUBAKI_HP/zh-tw/` |
+| 韓国語 | `/TSUBAKI_HP/ko/` |
+| ヒンディー語 | `/TSUBAKI_HP/hi/` |
+| フランス語 | `/TSUBAKI_HP/fr/` |
+| ドイツ語 | `/TSUBAKI_HP/de/` |
 
-GitHub上でJSONを編集してCommitするか、ローカルで次を実行します。
+次も確認します。
 
-```bash
-npm run check
-npm run build
-git add .
-git commit -m "update portfolio"
-git push origin main
-```
-
-`main`の更新を検知してGitHub Actionsが自動公開します。
-
-## 6. 公開後の確認
-
-- トップページが表示される
-- ロゴがTSUBAKI Techになっている
-- 日本語・英語切替が動く
-- 作品詳細と記事詳細を開ける
+- 言語メニューが同じプロジェクト・記事へ移動する
+- CSS、ロゴ、作品画像が表示される
 - ダークモードが動く
-- 問い合わせフォームから送信できる
+- 作品詳細と記事詳細が開く
+- 問い合わせがFormspreeへ送信される
 - `tsubaki.tech.jp@gmail.com`へ通知が届く
 
-## 7. よくあるエラー
+## 6. よくあるエラー
 
-### Pagesが404
+### Translation validation failed
 
-- Settings → PagesのSourceが`GitHub Actions`か確認
-- Actionsのデプロイが成功しているか確認
-- URLの末尾まで正しく入力する
+翻訳対象のオブジェクトに8言語のいずれかが不足しています。エラーに表示されたJSONパスを確認し、次のキーをそろえます。
 
 ```text
-https://naokibot.github.io/TSUBAKI_HP/
+ja, en, ru, zh-TW, ko, hi, fr, de
 ```
+
+### Pagesが404になる
+
+- `Settings` → `Pages`のSourceが`GitHub Actions`か確認
+- Actionsの最新デプロイが成功しているか確認
+- URLにリポジトリ名`TSUBAKI_HP`が含まれているか確認
 
 ### CSSや画像が表示されない
 
-`.github/workflows/deploy-pages.yml`の次の値を確認します。
+`.github/workflows/deploy-pages.yml`の値を確認します。
 
 ```text
 SITE_BASE_URL=https://naokibot.github.io/TSUBAKI_HP/
 SITE_BASE_PATH=/TSUBAKI_HP
 ```
 
-リポジトリ名を変えた場合は両方を新しい名前へ変更します。
+リポジトリ名を変更した場合は、`package.json`の`build:pages`とワークフローの両方を変更します。
 
-### Actionsで`Missing script: build`
+### Actionsで Missing script: build
 
-リポジトリ直下の`package.json`を使っているか確認します。GitHubへアップロードするときにフォルダが二重になっていないか確認してください。
+GitHubへアップロードしたフォルダ階層を確認します。リポジトリ直下に次が必要です。
+
+```text
+package.json
+content/
+scripts/
+src/
+public/
+```
 
 ### 問い合わせが「準備中」になる
 
-`content/site.json`の`contactEndpoint`が次のままです。
+`content/site.json`が次のままです。
 
 ```text
 https://formspree.io/f/YOUR_FORM_ID
 ```
 
-Formspreeで発行された実際のエンドポイントへ置き換えてCommitしてください。
+実際のFormspreeエンドポイントへ変更し、Commitします。
 
 ### 問い合わせ送信に失敗する
 
-- Formspreeのフォームが削除されていないか
-- Form IDの入力ミスがないか
-- Formspreeアカウントのメール確認が完了しているか
-- 通知先が`tsubaki.tech.jp@gmail.com`か
-- FormspreeのSubmission画面に記録があるか
-- 迷惑メールフォルダへ入っていないか
+- Form IDの入力ミス
+- Formspreeのメール確認が未完了
+- フォームが削除済み
+- 通知先が違う
+- 30秒以内に連続送信した
+- Formspree側の利用上限に達した
 
-### GitHubリポジトリ一覧が表示されない
+FormspreeのSubmissionsに記録があるか確認し、Gmailの迷惑メールも確認します。
 
-GitHub APIの一時的な回数制限や通信失敗の可能性があります。サイト上部のGitHubリンクからリポジトリ自体は開けます。時間を置いて再読み込みしてください。
+### GitHub一覧が表示されない
+
+GitHub APIの一時的な回数制限または通信失敗です。時間を置いて再読込します。サイト内のGitHubリンクからリポジトリへ直接移動できます。
 
 ### 変更が反映されない
 
-1. GitHubの`main`にCommitされているか確認
+1. `main`へCommitされているか確認
 2. Actionsの最新実行を確認
-3. ブラウザで`Ctrl + F5`を押す
-4. 公開中のActions実行が最新Commitか確認
+3. ブラウザで`Ctrl + F5`
+4. 公開中のCommit SHAが最新か確認
