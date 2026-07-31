@@ -7,7 +7,12 @@
 | 変更したい表示 | 編集するファイル | 主な項目・場所 |
 |---|---|---|
 | チーム名 | `content/site.json` | `name` |
-| トップの大見出し | `content/site.json` | `tagline.ja`、`tagline.en` |
+| トップのキャッチコピー | `content/site.json` | `tagline.ja`、`tagline.en` |
+| 最新告知帯 | `content/site.json` | `announcement.date`、`announcement.title`、`announcement.link` |
+| ミッションの大見出し・本文 | `content/site.json` | `mission.title`、`mission.body` |
+| 3つの活動領域 | `content/site.json` | `focusAreas` |
+| 実績の数値表示 | `content/site.json` | `stats` |
+| 問い合わせ前のCTA | `content/site.json` | `cta.title`、`cta.body` |
 | トップの紹介文 | `content/site.json` | `description.ja`、`description.en` |
 | 「私たちについて」の本文 | `content/site.json` | `about.ja`、`about.en` |
 | メールアドレス | `content/site.json` | `email` |
@@ -26,22 +31,27 @@
 |---|---|---|
 | ヘッダー・フッターのロゴ | `public/logo.svg` | 花の図形は `<g transform="translate(36 36)">` 内、文字は最後の `<text>` |
 | ブラウザのアイコン | `public/favicon.svg` | 小さなタブ用アイコン |
-| トップ右側のプロフィール画像 | `public/profile.svg` | 下部の文字は最後の `<text>` |
+| トップのメイン画像 | `public/profile.svg` | ヒーロー内の大きな画像として使用 |
 | SNS共有用OGP画像 | `public/og-image.svg` と `public/og-image.png.base64.*` | SVGを編集後、PNGも同じデザインに更新する |
-| ByteQuestの作品画像 | `public/projects/bytequest.svg` | 作品カードと詳細ページで使用 |
-| ScreenLessの作品画像 | `public/projects/screenless.svg` | 作品カードと詳細ページで使用 |
-| SolidProofの作品画像 | `public/projects/solidproof.svg` | 作品カードと詳細ページで使用 |
+| ByteQuestの作品画像 | `public/projects/bytequest.svg` | トップのプロジェクト紹介と詳細ページで使用 |
+| ScreenLessの作品画像 | `public/projects/screenless.svg` | トップのプロジェクト紹介と詳細ページで使用 |
+| SolidProofの作品画像 | `public/projects/solidproof.svg` | トップのプロジェクト紹介と詳細ページで使用 |
 
 ## デザインを変更する場所
 
 | 変更したいデザイン | 編集するファイル | 検索する文字 |
 |---|---|---|
-| 色、背景色、文字色 | `src/styles.css` | `:root`、`--accent`、`--bg`、`--text` |
-| ロゴの表示サイズ | `src/styles.css` | `.brand`、`.footer-logo` |
-| トップの文字サイズ | `src/styles.css` | `.hero h1` |
-| 作品カードの列数・見た目 | `src/styles.css` | `.project-grid`、`.card` |
+| 色、背景色、文字色 | `src/styles.css` | `:root`、`--accent`、`--bg`、`--ink`、`--night` |
+| ロゴの表示サイズ | `src/styles.css` | `.brand`、`.footer-brand` |
+| トップの文字サイズ・画像構成 | `src/styles.css` | `.hero-copy h1`、`.hero-collage` |
+| 最新告知帯 | `src/styles.css` | `.announcement` |
+| 活動領域の3カード | `src/styles.css` | `.focus-grid`、`.focus-card` |
+| プロジェクト紹介の並び・見た目 | `src/styles.css` | `.project-feature`、`.project-visual` |
+| 実績の数値表示 | `src/styles.css` | `.stats-grid`、`.stat` |
+| ニュース一覧 | `src/styles.css` | `.news-list`、`.news-item` |
 | スマートフォン表示 | `src/styles.css` | `@media` |
-| スクロールアニメーション | `src/styles.css` と `src/app.js` | `.reveal`、`IntersectionObserver` |
+| スクロールアニメーション・進捗表示 | `src/styles.css` と `src/app.js` | `.reveal`、`.scroll-progress`、`IntersectionObserver` |
+| ページ上部へ戻るボタン | `src/styles.css` と `src/app.js` | `.back-to-top` |
 | ダークモード | `src/styles.css` と `src/app.js` | `[data-theme="dark"]`、`theme` |
 
 ## ナビゲーションやページ構造
@@ -53,6 +63,8 @@
 - ヘッダー：`header()`
 - フッター：`footer()`
 - トップページ：`home()`
+- プロジェクト表示：`projectFeature()`
+- ニュース表示：`newsItem()`
 - 作品詳細：`projectPage()`
 - 記事詳細：`postPage()`
 - SEOメタデータ：`head()`
@@ -63,6 +75,7 @@
 |---|---|
 | 表示メールアドレス | `content/site.json` の `email` |
 | Formspree送信先 | `content/site.json` の `contactEndpoint` |
+| 問い合わせ前の見出しと説明 | `content/site.json` の `cta` |
 | フォーム項目 | `scripts/build.mjs` 内の `contact-form` |
 | 送信処理とエラー表示 | `src/app.js` |
 
@@ -85,6 +98,15 @@ npm run dev
 ```
 
 ブラウザで `http://localhost:4173` を開きます。
+
+GitHub Pagesと同じパスを確認する場合は次を実行します。
+
+```bat
+npm run build:pages
+npm run serve -- --base-path=/TSUBAKI_HP
+```
+
+ブラウザで `http://localhost:4173/TSUBAKI_HP/` を開きます。
 
 ## GitHubへ反映する場合
 
