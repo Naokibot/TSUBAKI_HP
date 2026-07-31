@@ -1,0 +1,70 @@
+name: Apply release-ready portfolio
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/apply-release.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-release-ready-portfolio
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply verified release payload
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ ! -d .release-payload ]; then
+            echo "No release payload is present. Nothing to apply."
+            exit 0
+          fi
+
+          cat .release-payload/part-* > /tmp/tsubaki-release.b64
+          base64 --decode /tmp/tsubaki-release.b64 > /tmp/tsubaki-release.tar.gz
+          echo "849bf0c06e2eab125e6d88acc3a7a214e1f89ce0120915b814cd089101ead499  /tmp/tsubaki-release.tar.gz" | sha256sum --check --strict
+
+          tar --extract --gzip --file /tmp/tsubaki-release.tar.gz --directory .
+
+          rm -rf \
+            content/projects.json \
+            content/achievements.json \
+            public/projects \
+            docs/GITHUB_PAGES_FORM_SETUP_JA.md \
+            .release-payload
+
+      - name: Validate release
+        run: npm run check
+
+      - name: Build GitHub Pages output
+        run: npm run build:pages
+
+      - name: Commit release-ready source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No source changes to commit."
+            exit 0
+          fi
+
+          git commit -m "prepare release with live GitHub projects"
+          git push
