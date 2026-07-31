@@ -4,30 +4,74 @@ const storedTheme = localStorage.getItem('tsubaki-theme');
 const systemDark = matchMedia('(prefers-color-scheme: dark)').matches;
 root.dataset.theme = storedTheme || (systemDark ? 'dark' : 'light');
 
-document.querySelector('.theme')?.addEventListener('click', () => {
+const themeButton = document.querySelector('.theme');
+themeButton?.addEventListener('click', () => {
   root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
   localStorage.setItem('tsubaki-theme', root.dataset.theme);
 });
 
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.nav nav');
+const closeNavigation = () => {
+  nav?.classList.remove('open');
+  toggle?.setAttribute('aria-expanded', 'false');
+};
 toggle?.addEventListener('click', () => {
   const open = toggle.getAttribute('aria-expanded') === 'true';
   toggle.setAttribute('aria-expanded', String(!open));
   nav?.classList.toggle('open', !open);
 });
-nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-  nav.classList.remove('open');
-  toggle?.setAttribute('aria-expanded', 'false');
-}));
+nav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeNavigation));
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeNavigation();
+});
 
-const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
-  if (entry.isIntersecting) {
-    entry.target.classList.add('visible');
-    observer.unobserve(entry.target);
+const header = document.querySelector('.header');
+const progress = document.querySelector('.scroll-progress i');
+const backToTop = document.querySelector('.back-to-top');
+function updateScrollUi() {
+  const top = window.scrollY;
+  const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  header?.classList.toggle('is-scrolled', top > 18);
+  backToTop?.classList.toggle('is-visible', top > 700);
+  if (progress) progress.style.width = `${Math.min(100, (top / scrollable) * 100)}%`;
+}
+window.addEventListener('scroll', updateScrollUi, { passive: true });
+window.addEventListener('resize', updateScrollUi);
+updateScrollUi();
+backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
   }
-}), { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+}, { threshold: 0.12, rootMargin: '0px 0px -30px' });
+document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+
+const navLinks = [...document.querySelectorAll('.nav nav a[href*="#"]')];
+const homeSections = [...document.querySelectorAll('main section[id]')];
+if (navLinks.length && homeSections.length) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+    navLinks.forEach((link) => {
+      const hash = new URL(link.href, location.href).hash;
+      link.classList.toggle('is-active', hash === `#${visible.target.id}`);
+    });
+  }, { threshold: [0.25, 0.55], rootMargin: '-20% 0px -55%' });
+  homeSections.forEach((section) => sectionObserver.observe(section));
+}
+
+function escapeHtml(value = '') {
+  return String(value).replace(/[&<>"']/g, (character) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[character]));
+}
 
 async function loadRepos() {
   const container = document.querySelector('#github-repos');
@@ -38,10 +82,17 @@ async function loadRepos() {
       `https://api.github.com/users/${encodeURIComponent(user)}/repos?sort=updated&per_page=6`,
       { headers: { Accept: 'application/vnd.github+json' } }
     );
-    if (!response.ok) throw new Error('GitHub API error');
+    if (!response.ok) throw new Error(`GitHub API ${response.status}`);
     const repos = (await response.json()).filter((repo) => !repo.fork).slice(0, 6);
-    container.innerHTML = repos.map((repo) => `<article class="repo card"><div class="card-body"><h3><a href="${repo.html_url}">${repo.name}</a></h3><p>${repo.description || 'GitHub repository'}</p><div class="repo-meta"><span>${repo.language || 'Code'}</span><span>★ ${repo.stargazers_count}</span></div></div></article>`).join('') || '<p>No public repositories found.</p>';
-  } catch {
+    container.innerHTML = repos.map((repo) => {
+      const name = escapeHtml(repo.name);
+      const description = escapeHtml(repo.description || 'GitHub repository');
+      const language = escapeHtml(repo.language || 'Code');
+      const url = /^https:\/\/github\.com\//.test(repo.html_url) ? repo.html_url : '#';
+      return `<article class="repo"><h3><a href="${url}" target="_blank" rel="noopener">${name}</a></h3><p>${description}</p><div class="repo-meta"><span>${language}</span><span>★ ${Number(repo.stargazers_count) || 0}</span></div></article>`;
+    }).join('') || '<p>No public repositories found.</p>';
+  } catch (error) {
+    console.error('GitHub repositories:', error);
     container.innerHTML = '<p>GitHub repositories could not be loaded. Please use the GitHub link above.</p>';
   }
 }
@@ -67,13 +118,17 @@ if (form) {
 
     const began = Number(startedAt?.value || 0);
     if (!began || Date.now() - began < 2500) {
-      status.textContent = isJapanese ? '入力内容を確認して、少し待ってから送信してください。' : 'Please check the form and wait a moment before sending.';
+      status.textContent = isJapanese
+        ? '入力内容を確認して、少し待ってから送信してください。'
+        : 'Please check the form and wait a moment before sending.';
       return;
     }
 
     const last = Number(localStorage.getItem('tsubaki-last-contact') || 0);
     if (Date.now() - last < 30000) {
-      status.textContent = isJapanese ? '連続送信を防ぐため、30秒ほど待ってください。' : 'Please wait 30 seconds before sending another message.';
+      status.textContent = isJapanese
+        ? '連続送信を防ぐため、30秒ほど待ってください。'
+        : 'Please wait 30 seconds before sending another message.';
       return;
     }
 
@@ -105,7 +160,9 @@ if (form) {
       localStorage.setItem('tsubaki-last-contact', String(Date.now()));
       form.reset();
       if (startedAt) startedAt.value = String(Date.now());
-      status.textContent = isJapanese ? '送信しました。ご連絡ありがとうございます。' : 'Message sent. Thank you for contacting us.';
+      status.textContent = isJapanese
+        ? '送信しました。ご連絡ありがとうございます。'
+        : 'Message sent. Thank you for contacting us.';
     } catch (error) {
       console.error('Contact form error:', error);
       status.textContent = isJapanese
