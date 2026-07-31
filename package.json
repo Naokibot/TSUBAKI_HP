@@ -1,13 +1,13 @@
 {
-  "name": "tsubaki-tech-portfolio",
-  "version": "3.1.0",
+  "name": "hotaru-ascend-portfolio",
+  "version": "4.0.0",
   "private": true,
   "type": "module",
-  "description": "A multilingual TSUBAKI Tech portfolio for GitHub Pages.",
+  "description": "A multilingual Hotaru Ascend portfolio for GitHub Pages.",
   "scripts": {
     "validate": "node scripts/validate-release.mjs",
-    "check": "npm run validate && node --check src/app.js && node --check scripts/build.mjs && node --check scripts/validate-release.mjs && node --check scripts/serve.mjs && node --check scripts/update-og-references.mjs",
-    "build": "npm run validate && node scripts/build.mjs && node scripts/update-og-references.mjs",
+    "check": "npm run validate && node --check src/app.js && node --check scripts/build.mjs && node --check scripts/validate-release.mjs && node --check scripts/serve.mjs",
+    "build": "npm run validate && node scripts/build.mjs",
     "build:pages": "SITE_BASE_URL=https://naokibot.github.io/TSUBAKI_HP/ SITE_BASE_PATH=/TSUBAKI_HP npm run build",
     "serve": "node scripts/serve.mjs",
     "dev": "npm run build && npm run serve",
