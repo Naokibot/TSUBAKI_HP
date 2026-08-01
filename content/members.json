@@ -48,5 +48,56 @@
       "UI / UX"
     ],
     "github": "https://github.com/Naokibot"
+  },
+  {
+    "slug": "hahatchi",
+    "icon": "/members/hahatchi.svg",
+    "name": {
+      "ja": "ははっち",
+      "en": "ははっち",
+      "ru": "ははっち",
+      "zh-TW": "ははっち",
+      "ko": "ははっち",
+      "hi": "ははっち",
+      "fr": "ははっち",
+      "de": "ははっち"
+    },
+    "role": {
+      "ja": "メタバース・感触工学研究／Java開発",
+      "en": "Metaverse & Haptics Research / Java Development",
+      "ru": "Исследования метавселенной и тактильных технологий / Java-разработка",
+      "zh-TW": "元宇宙與觸覺工程研究／Java 開發",
+      "ko": "메타버스·촉각공학 연구 / Java 개발",
+      "hi": "मेटावर्स व हैप्टिक्स शोध / Java विकास",
+      "fr": "Recherche sur le métavers et l’haptique / Développement Java",
+      "de": "Metaverse- und Haptikforschung / Java-Entwicklung"
+    },
+    "summary": {
+      "ja": "メタバースおよび感触工学の研究に取り組みながら、プライベートではJavaを使い、Minecraftサーバーの独自機能を開発しています。",
+      "en": "Researches the metaverse and haptics engineering while privately developing custom features for a Minecraft server in Java.",
+      "ru": "Исследует метавселенную и тактильные технологии, а в личных проектах разрабатывает на Java собственные функции для сервера Minecraft.",
+      "zh-TW": "投入元宇宙與觸覺工程研究，並在個人時間使用 Java 開發 Minecraft 伺服器的自訂功能。",
+      "ko": "메타버스와 촉각공학을 연구하면서, 개인적으로 Java를 사용해 Minecraft 서버의 독자 기능을 개발하고 있습니다.",
+      "hi": "मेटावर्स और हैप्टिक्स इंजीनियरिंग पर शोध करते हुए निजी तौर पर Java से Minecraft सर्वर के लिए विशेष सुविधाएँ विकसित कर रहे हैं।",
+      "fr": "Mène des recherches sur le métavers et l’ingénierie haptique, tout en développant à titre personnel des fonctionnalités sur mesure pour un serveur Minecraft en Java.",
+      "de": "Forscht zu Metaverse und Haptik und entwickelt privat mit Java eigene Funktionen für einen Minecraft-Server."
+    },
+    "bio": {
+      "ja": "メタバースと感触工学に関する研究を進めています。研究活動と並行して、プライベートではJavaを用いた開発に取り組み、現在はMinecraftサーバーで利用する独自機能の設計・実装を進めています。",
+      "en": "Researches the metaverse and haptics engineering. Alongside this work, develops personal projects in Java and is currently designing and implementing custom features for a Minecraft server.",
+      "ru": "Проводит исследования в области метавселенной и тактильных технологий. Параллельно занимается личными проектами на Java и сейчас проектирует и реализует собственные функции для сервера Minecraft.",
+      "zh-TW": "持續進行元宇宙與觸覺工程相關研究。研究之餘，也投入 Java 個人開發，目前正設計並實作供 Minecraft 伺服器使用的自訂功能。",
+      "ko": "메타버스와 촉각공학에 관한 연구를 진행하고 있습니다. 연구와 병행해 개인적으로 Java 개발에 힘쓰며, 현재 Minecraft 서버에서 사용할 독자 기능을 설계하고 구현하고 있습니다.",
+      "hi": "मेटावर्स और हैप्टिक्स इंजीनियरिंग से जुड़े विषयों पर शोध करते हैं। शोध के साथ-साथ निजी Java परियोजनाओं पर काम करते हुए वर्तमान में Minecraft सर्वर के लिए विशेष सुविधाओं का डिज़ाइन और कार्यान्वयन कर रहे हैं।",
+      "fr": "Poursuit des recherches sur le métavers et l’ingénierie haptique. En parallèle, développe des projets personnels en Java et conçoit actuellement des fonctionnalités sur mesure destinées à un serveur Minecraft.",
+      "de": "Forscht zu Metaverse und Haptik. Parallel dazu arbeitet die Person privat an Java-Projekten und entwickelt derzeit eigene Funktionen für einen Minecraft-Server."
+    },
+    "skills": [
+      "Metaverse",
+      "Haptics Engineering",
+      "Java",
+      "Minecraft Server Development"
+    ],
+    "github": ""
   }
 ]
