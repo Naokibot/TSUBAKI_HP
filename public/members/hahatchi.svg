@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">ははっち profile icon</title>
+  <desc id="desc">A dark profile icon combining a virtual-reality visor, haptic waves, and a glowing Java-inspired accent.</desc>
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="22%" r="92%">
+      <stop offset="0" stop-color="#29415c"/>
+      <stop offset="0.55" stop-color="#151d2d"/>
+      <stop offset="1" stop-color="#090d16"/>
+    </radialGradient>
+    <linearGradient id="visor" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#9ee8ff"/>
+      <stop offset="1" stop-color="#6178ff"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#fff4b2" stop-opacity=".95"/>
+      <stop offset=".38" stop-color="#ffad4f" stop-opacity=".65"/>
+      <stop offset="1" stop-color="#ff7b39" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="640" rx="160" fill="url(#bg)"/>
+  <circle cx="470" cy="150" r="128" fill="url(#glow)"/>
+  <g fill="none" stroke="#8ee9ff" stroke-linecap="round" opacity=".7">
+    <path d="M95 222c52-72 118-108 199-108" stroke-width="10"/>
+    <path d="M82 269c64-88 145-132 244-132" stroke-width="6" opacity=".62"/>
+    <path d="M72 315c76-102 171-153 287-153" stroke-width="4" opacity=".42"/>
+  </g>
+  <g transform="translate(320 325)">
+    <path d="M-152-58c38-44 86-66 152-66s114 22 152 66l-24 116c-8 38-42 66-82 66h-92c-40 0-74-28-82-66Z" fill="url(#visor)"/>
+    <path d="M-118-43c29-29 68-44 118-44s89 15 118 44l-16 72c-5 24-27 42-52 42h-100c-25 0-47-18-52-42Z" fill="#0d1423" opacity=".9"/>
+    <circle cx="-48" cy="-2" r="24" fill="#8ef4ff" opacity=".88"/>
+    <circle cx="48" cy="-2" r="24" fill="#8ef4ff" opacity=".88"/>
+    <path d="M-17 12h34" stroke="#b8c6ff" stroke-width="12" stroke-linecap="round"/>
+    <path d="M-116 101c34 45 72 67 116 67s82-22 116-67" fill="none" stroke="#6f84ff" stroke-width="15" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(470 160)">
+    <path d="M-30 12c18-10 42-10 60 0" fill="none" stroke="#ffb45f" stroke-width="11" stroke-linecap="round"/>
+    <path d="M-20-10c12-8 28-8 40 0" fill="none" stroke="#ffd381" stroke-width="9" stroke-linecap="round"/>
+    <path d="M-7-33c5-4 9-9 9-16 0-8-5-13-5-21" fill="none" stroke="#fff0b5" stroke-width="8" stroke-linecap="round"/>
+  </g>
+</svg>
