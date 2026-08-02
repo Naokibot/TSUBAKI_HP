@@ -26,8 +26,7 @@
 body { background: var(--paper); color: var(--ink); line-height: 1.82; }
 .hero-grid,
 .hero-shape,
-.hero-ticker,
-.stats-tape { display: none !important; }
+.hero-ticker { display: none !important; }
 
 .header { color: #fff; }
 .header.is-scrolled {
@@ -108,8 +107,15 @@ body { background: var(--paper); color: var(--ink); line-height: 1.82; }
 .hero-symbol span { display: none; }
 .hero-symbol img {
   width: 150px;
-  filter: none;
+  filter: drop-shadow(0 14px 24px rgba(216,178,63,.2));
   transform: none;
+  animation: firefly-hover 3.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes firefly-hover {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-13px) rotate(2deg); }
 }
 
 .button {
@@ -203,8 +209,31 @@ h2 {
 .member-role { color: var(--accent); letter-spacing: .06em; text-transform: none; }
 .text-link { color: var(--ink); border: 0; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 5px; }
 
-.stats-section { padding: 68px 0; background: #172238; }
-.stats-grid { padding-top: 0; gap: 0; }
+.stats-section { padding: 0 0 68px; background: #172238; }
+.stats-tape {
+  display: flex !important;
+  width: 100%;
+  overflow: hidden;
+  border: 0;
+  border-block: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.74);
+  transform: none;
+  white-space: nowrap;
+}
+.stats-tape span {
+  flex: 0 0 auto;
+  min-width: max-content;
+  padding: 12px 0;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  animation: stats-ticker 22s linear infinite;
+}
+@keyframes stats-ticker {
+  to { transform: translateX(-100%); }
+}
+.stats-grid { padding-top: 68px; gap: 0; }
 .stat {
   min-height: auto;
   padding: 24px 34px;
@@ -258,11 +287,7 @@ footer { background: #172238; color: #fff; }
   .stat:last-child { border-left: 0; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.14); }
 }
 
-@media (max-width: 640px) {
-  .section-head { grid-template-columns: 1fr; gap: 6px; }
-  .section-number { padding: 0; }
-  .section-block { padding: 82px 0; }
-  .hero h1 { font-size: clamp(3.1rem, 15vw, 4.8rem); }
-  .lead,
-  .development-note { padding: 24px; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-symbol img,
+  .stats-tape span { animation: none; }
 }
