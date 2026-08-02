@@ -21,24 +21,24 @@
     "de": "Wir von Hotaru Ascend nutzen vielfältige Technologien, um in noch unbekannte Welten vorzustoßen."
   },
   "about": {
-    "ja": "私たちは、日常で感じた小さな不便や学習のつまずきを出発点に、調査、設計、実装、利用者テストまで自分たちで行います。見た目だけではなく、仕組みを説明できるプロダクトを目指しています。",
-    "en": "We start with small frustrations and learning obstacles from everyday life, then handle research, design, implementation, and user testing ourselves. We aim to build products whose mechanisms can be clearly explained, not just attractive interfaces.",
-    "ru": "Мы начинаем с небольших неудобств и трудностей в обучении, с которыми сталкиваемся каждый день, а затем самостоятельно проводим исследование, проектируем, программируем и тестируем решения с пользователями. Для нас важно не только создать привлекательный интерфейс, но и уметь понятно объяснить, как работает продукт.",
-    "zh-TW": "我們從日常生活中的小小不便與學習卡關出發，親自完成調查、設計、實作與使用者測試。我們追求的不只是好看的介面，更希望每一項產品背後的運作方式都能被清楚說明。",
-    "ko": "우리는 일상에서 느낀 작은 불편과 학습의 막힘에서 출발해 조사, 설계, 구현, 사용자 테스트까지 직접 진행합니다. 보기 좋은 화면에 그치지 않고, 작동 원리를 설명할 수 있는 제품을 만드는 것이 목표입니다.",
-    "hi": "हम रोज़मर्रा की छोटी असुविधाओं और सीखने में आने वाली रुकावटों से शुरुआत करते हैं। शोध, डिज़ाइन, विकास और उपयोगकर्ता परीक्षण—हर चरण हम स्वयं करते हैं। हमारा लक्ष्य केवल सुंदर इंटरफ़ेस बनाना नहीं, बल्कि ऐसा उत्पाद बनाना है जिसकी कार्यप्रणाली स्पष्ट रूप से समझाई जा सके।",
-    "fr": "Nous partons de petites difficultés du quotidien et de blocages rencontrés pendant l’apprentissage, puis nous menons nous-mêmes la recherche, la conception, le développement et les tests utilisateurs. Notre objectif ne se limite pas à créer de belles interfaces : nous voulons aussi pouvoir expliquer clairement le fonctionnement de chaque produit.",
-    "de": "Wir beginnen bei kleinen Alltagsproblemen und Lernhürden und übernehmen Recherche, Konzeption, Umsetzung und Nutzertests selbst. Unser Ziel sind nicht nur ansprechende Oberflächen, sondern Produkte, deren Funktionsweise sich verständlich erklären lässt."
+    "ja": "私たちは、学生が感じる課題・問題を、調査・設計・実装まですべて自分たちで行い、社会課題・問題の解決を目指します。",
+    "en": "We take on challenges and problems experienced by students, carrying out the research, design, and implementation ourselves as we work toward solving social issues.",
+    "ru": "Мы берёмся за задачи и проблемы, с которыми сталкиваются студенты, самостоятельно проводим исследования, проектирование и разработку и стремимся решать общественные проблемы.",
+    "zh-TW": "我們以學生感受到的課題與問題為出發點，自行完成調查、設計與實作，致力於解決社會課題與問題。",
+    "ko": "우리는 학생이 느끼는 과제와 문제를 바탕으로 조사·설계·구현을 모두 직접 수행하며 사회 문제 해결을 목표로 합니다.",
+    "hi": "हम विद्यार्थियों द्वारा महसूस की जाने वाली चुनौतियों और समस्याओं पर काम करते हैं, शोध, डिज़ाइन और कार्यान्वयन स्वयं करते हैं और सामाजिक समस्याओं के समाधान का लक्ष्य रखते हैं।",
+    "fr": "Nous partons des difficultés et des problèmes rencontrés par les élèves, menons nous-mêmes la recherche, la conception et la réalisation, et cherchons à résoudre des enjeux de société.",
+    "de": "Wir greifen Herausforderungen und Probleme auf, die Schülerinnen und Schüler wahrnehmen, und übernehmen Recherche, Konzeption und Umsetzung selbst, um gesellschaftliche Probleme zu lösen."
   },
   "developmentSince": {
-    "ja": "2025年から、次世代の学習体験を目指すプログラミングエディターを開発しています。",
-    "en": "Since 2025, we have been developing a programming editor designed for the next generation of learning experiences.",
-    "ru": "С 2025 года мы разрабатываем программный редактор для нового поколения образовательных продуктов.",
-    "zh-TW": "自 2025 年起，我們持續開發面向下一代學習體驗的程式設計編輯器。",
-    "ko": "2025년부터 차세대 학습 경험을 위한 프로그래밍 에디터를 개발하고 있습니다.",
-    "hi": "2025 से हम अगली पीढ़ी के सीखने के अनुभवों के लिए एक प्रोग्रामिंग एडिटर विकसित कर रहे हैं।",
-    "fr": "Depuis 2025, nous développons un éditeur de programmation pensé pour la prochaine génération d’expériences d’apprentissage.",
-    "de": "Seit 2025 entwickeln wir einen Programmiereditor für die nächste Generation von Lernerfahrungen."
+    "ja": "私たちは、学生が感じる社会課題を解決することを目標に活動しています。",
+    "en": "We work with the goal of solving social issues experienced by students.",
+    "ru": "Наша цель — решать общественные проблемы, с которыми сталкиваются студенты.",
+    "zh-TW": "我們以解決學生感受到的社會課題為目標展開活動。",
+    "ko": "우리는 학생이 느끼는 사회 문제를 해결하는 것을 목표로 활동하고 있습니다.",
+    "hi": "हम विद्यार्थियों द्वारा महसूस की जाने वाली सामाजिक समस्याओं को हल करने के लक्ष्य से कार्य करते हैं।",
+    "fr": "Nous agissons avec pour objectif de résoudre les enjeux sociaux ressentis par les élèves.",
+    "de": "Wir arbeiten mit dem Ziel, gesellschaftliche Probleme zu lösen, die Schülerinnen und Schüler wahrnehmen."
   },
   "footerTagline": {
     "ja": "私たちは挑戦します。新しい世界へ。",
@@ -80,14 +80,14 @@
     {
       "value": "2025",
       "label": {
-        "ja": "エディター開発開始",
-        "en": "Editor development began",
-        "ru": "Начало разработки редактора",
-        "zh-TW": "開始開發編輯器",
-        "ko": "에디터 개발 시작",
-        "hi": "एडिटर विकास की शुरुआत",
-        "fr": "Début du développement de l’éditeur",
-        "de": "Beginn der Editorentwicklung"
+        "ja": "チーム始動",
+        "en": "Team launched",
+        "ru": "Запуск команды",
+        "zh-TW": "團隊啟動",
+        "ko": "팀 활동 시작",
+        "hi": "टीम की शुरुआत",
+        "fr": "Lancement de l’équipe",
+        "de": "Teamstart"
       }
     }
   ],
