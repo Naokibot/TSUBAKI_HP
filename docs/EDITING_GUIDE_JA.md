@@ -1,6 +1,6 @@
 # Hotaru Ascend ポートフォリオ編集ガイド
 
-このサイトは文章やメンバー情報をJSONで管理し、`npm run build`で静的HTMLを生成します。
+このサイトは文章やメンバー情報をJSONで管理し、`npm run build`で静的HTMLを生成します。UIは大きな英字見出し、番号付きセクション、濃紺・黄色・赤の高コントラスト構成です。
 
 ## 主な編集場所
 
@@ -11,13 +11,23 @@
 | 所属者の名前、役割、紹介文、得意分野 | `content/members.json` |
 | 所属者のアイコン | `public/members/` |
 | ブログ記事 | `content/posts.json` |
-| スキル | `content/skills.json` |
 | ページ構成 | `scripts/build.mjs` |
 | ダークモードやメニュー動作 | `src/app.js` |
 | 色、余白、メンバーカード、スマートフォン表示 | `src/styles.css` |
 | ロゴ | `public/logo.svg` |
 | ブラウザアイコン | `public/favicon.svg` |
 | SNS共有画像 | `public/og-image.svg` |
+
+## UIを変更する場所
+
+現在のトップページは、濃紺の大きなファーストビュー、黄色・赤のアクセント、大型英字見出し、番号付きセクション、太い枠線とずらした影で構成されています。
+
+主な変更場所は次のとおりです。
+
+```text
+src/styles.css       配色、形、影、文字サイズ、レスポンシブ表示
+scripts/build.mjs    セクションの順番、見出し、装飾用HTML
+```
 
 ## 所属者を追加する方法
 
@@ -88,7 +98,7 @@ content/members.json
 | `role` | 担当や役割 |
 | `summary` | トップページのカードに表示する短い紹介 |
 | `bio` | 個別プロフィールページの詳しい紹介 |
-| `skills` | 得意分野。必要な数だけ追加できます |
+| `skills` | 個別プロフィールに表示する得意分野。必要な数だけ追加できます |
 | `github` | 個人GitHub。不要なら空文字`""`にできます |
 
 ### アイコンを追加する場所
