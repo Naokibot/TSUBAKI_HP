@@ -29,6 +29,7 @@ assert.equal(Object.hasOwn(site, 'xUrl'), false, 'X must not be configured.');
 assert.equal(Object.hasOwn(site, 'instagramUrl'), false, 'Instagram must not be configured.');
 assert.equal(await exists('content/projects.json'), false, 'Legacy manual projects must remain removed.');
 assert.equal(await exists('content/achievements.json'), false, 'Legacy achievement data must remain removed.');
+assert.equal(await exists('content/skills.json'), false, 'The removed capabilities data must not remain.');
 
 function validateLocalized(value, label) {
   assert.ok(value && typeof value === 'object' && !Array.isArray(value), `${label} must be localized.`);
@@ -55,6 +56,7 @@ for (const [index, member] of members.entries()) {
 const referenceUiKeys = Object.keys(languages.ja.ui).sort();
 for (const [languageCode, language] of Object.entries(languages)) {
   assert.deepEqual(Object.keys(language.ui).sort(), referenceUiKeys, `${languageCode} UI keys must match Japanese.`);
+  assert.equal(Object.hasOwn(language.ui, 'capabilities'), false, `${languageCode}.ui.capabilities must be removed.`);
 }
 
 const sourceFiles = [
@@ -87,9 +89,11 @@ for (const forbidden of [
   '学生主体',
   '資格・受賞歴を追加できます',
   'クロスプラットフォーム学習・集中支援の研究',
-  'スクリーン管理、学習可視化、利用者テスト'
+  'スクリーン管理、学習可視化、利用者テスト',
+  '技術と制作力',
+  'skill-grid'
 ]) {
   assert.equal(combinedSource.toLowerCase().includes(forbidden.toLowerCase()), false, `Forbidden release text remains: ${forbidden}`);
 }
 
-console.log(`Release validation passed for Hotaru Ascend with ${members.length} member profile(s), eight languages, preparing project/blog sections, and no contact form.`);
+console.log(`Release validation passed for Hotaru Ascend with ${members.length} member profile(s), eight languages, contest-inspired UI, preparing project/blog sections, no capabilities section, and no contact form.`);
