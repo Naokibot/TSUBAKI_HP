@@ -2,7 +2,7 @@
 
 A dependency-free, multilingual portfolio website for **Hotaru Ascend**, a student-led development team in Japan.
 
-The website is generated with Node.js and published as plain HTML, CSS, and JavaScript on GitHub Pages. It currently presents the team, capabilities, statistics, member profiles, and preparing states for projects and the blog.
+The website is generated with Node.js and published as plain HTML, CSS, and JavaScript on GitHub Pages. It currently presents the team, statistics, member profiles, and preparing states for projects and the blog.
 
 ## Supported languages
 
@@ -22,7 +22,7 @@ The website is generated with Node.js and published as plain HTML, CSS, and Java
 - Eight-language home, member profile, article, and error pages
 - Member cards and individual member profile pages
 - Equivalent-page language switching
-- Responsive editorial layout
+- Original high-contrast contest-style layout with bold typography, numbered sections, and geometric accents
 - Light and dark themes
 - Accessible mobile navigation and reduced-motion support
 - Localized SEO metadata and Open Graph tags
@@ -41,7 +41,6 @@ content/
   site.json            Brand copy, links, statistics, and footer copy
   members.json         Member names, roles, introductions, icons, skills, and links
   posts.json           News and engineering articles; currently empty
-  skills.json          Skills and localized descriptions
 
 public/
   members/             Member icon files
@@ -162,7 +161,6 @@ All eight language keys are required for `name`, `role`, `summary`, and `bio`. P
 | Member icons | `public/members/` |
 | Navigation and interface translations | `content/languages.json` |
 | Articles | `content/posts.json` |
-| Skills | `content/skills.json` |
 | Colors, spacing, typography | `src/styles.css` |
 | Browser interactions | `src/app.js` |
 | Page structure and SEO | `scripts/build.mjs` |
