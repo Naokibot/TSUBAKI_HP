@@ -63,14 +63,14 @@
       "de": "ははっち"
     },
     "role": {
-      "ja": "メタバース・感触工学研究／Java開発",
-      "en": "Metaverse & Haptics Research / Java Development",
-      "ru": "Исследования метавселенной и тактильных технологий / Java-разработка",
-      "zh-TW": "元宇宙與觸覺工程研究／Java 開發",
-      "ko": "메타버스·촉각공학 연구 / Java 개발",
-      "hi": "मेटावर्स व हैप्टिक्स शोध / Java विकास",
-      "fr": "Recherche sur le métavers et l’haptique / Développement Java",
-      "de": "Metaverse- und Haptikforschung / Java-Entwicklung"
+      "ja": "開発メンバー・アドバイザー",
+      "en": "Development Member / Advisor",
+      "ru": "Участник разработки / советник",
+      "zh-TW": "開發成員／顧問",
+      "ko": "개발 멤버·어드바이저",
+      "hi": "विकास सदस्य / सलाहकार",
+      "fr": "Membre du développement / conseiller",
+      "de": "Entwicklungsmitglied / Berater"
     },
     "summary": {
       "ja": "メタバースおよび感触工学の研究に取り組みながら、プライベートではJavaを使い、Minecraftサーバーの独自機能を開発しています。",
