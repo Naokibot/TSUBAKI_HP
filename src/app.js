@@ -1,3 +1,11 @@
+const refinementStyles = ['../refine-ui.css', '../refine-blog.css'];
+for (const stylePath of refinementStyles) {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = new URL(stylePath, import.meta.url).href;
+  document.head.append(link);
+}
+
 const root = document.documentElement;
 
 const savedTheme = localStorage.getItem('hotaru-ascend-theme');
