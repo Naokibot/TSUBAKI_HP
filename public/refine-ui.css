@@ -212,13 +212,15 @@ h2 {
 .stats-section { padding: 0 0 68px; background: #172238; }
 .stats-tape {
   display: flex !important;
-  width: 100%;
+  width: 102%;
+  margin-left: -1%;
   overflow: hidden;
   border: 0;
   border-block: 1px solid rgba(255,255,255,.14);
   background: rgba(255,255,255,.04);
   color: rgba(255,255,255,.74);
-  transform: none;
+  transform: rotate(-1deg);
+  transform-origin: center;
   white-space: nowrap;
 }
 .stats-tape span {
@@ -226,6 +228,7 @@ h2 {
   min-width: max-content;
   padding: 12px 0;
   font-size: .78rem;
+  font-style: italic;
   font-weight: 700;
   letter-spacing: .13em;
   animation: stats-ticker 22s linear infinite;
